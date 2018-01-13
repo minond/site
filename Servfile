@@ -6,10 +6,15 @@
 # nohup serv \
 #   -certDomain minond.co \
 #   -certDomain minond.xyz \
+#   -certDomain www.minond.co \
+#   -certDomain www.minond.xyz \
 #   -certDomain cp.minond.xyz \
 #   -certDomain txtimg.minond.xyz \
 #   -certDomain dearme.minond.xyz \
 #   -certCache cache &
+
+case Host(www, minond, xyz) => path / redirect(https://minond.xyz)
+case Host(www, minond, co)  => path / redirect(https://minond.co)
 
 case Host(txtimg, _, _) =>
   path /             proxy(http://localhost:3002)
