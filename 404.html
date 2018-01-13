@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Marcos Minond</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="og:site_name" content="Marcos Minond">
+    <meta name="og:title" content="Marcos Minond">
+    <meta name="og:description" content="My name is Marcos Minond and I am a freelance programmer.">
+    <meta name="description" content="My name is Marcos Minond and I am a freelance programmer.">
+    <meta name="referrer" content="origin">
+    <link rel="stylesheet" href="/css/tachyons.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+  </head>
+  <body class="spectral">
+<section role="main">
+<style type="text/css">
+body {
+  background-color: #ddfffe;
+}
+</style>
+
+<div class="pa3 pa5-ns">
+  <header class="tc ph5 lh-copy">
+    <h1 id="message" class="f1 f-headline-l code mb5 fw9 db tracked-tight">not found</h1>
+    <p class="f3">Can't find what you were looking for.</p>
+  </header>
+</div>
+
+<script>
+(function () {
+  // japanese is about the longest it should be
+  var options = [
+    'δεν ', /* greek */
+    'ei löydy', /* finnish */
+    '未找到', /* simplified chinese */
+    'לא נמצא', /* hebrew */
+    '찾을 수 없음', /* korean */
+    '見つかりません', /* japanese */
+    'not found', /* english */
+    'non inveni', /* latin */
+  ];
+
+  var message = options[Math.floor(Math.random() * options.length)];
+  var element = document.getElementById('message');
+
+  if (message && element) {
+    element.innerText = message;
+  }
+})();
+</script>
+</section>
+  </body>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-102424562-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>
+

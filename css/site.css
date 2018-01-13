@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Spectral');
+/* @import url('https://fonts.googleapis.com/css?family=Lora'); */
+/* @import url('https://fonts.googleapis.com/css?family=EB+Garamond'); */
+
+body {
+  cursor: default;
+}
+
+/* #fd6861 */
+/* #f0d202 */
+
+/* .eb_garamond { */
+/*   font-family: 'EB Garamond', serif; */
+/* } */
+
+/* .lora { */
+/*   font-family: 'Lora', serif; */
+/* } */
+
+.spectral {
+  font-family: 'Spectral', serif;
+}
+
+.sitelink {
+  transition: all .1s;
+}
+
+::-moz-selection {
+  background: #357edd;
+  color: white;
+}
+
+::selection {
+  background: #357edd;
+  color: white;
+}
+
+.sitelink:active,
+.sitelink:focus,
+.sitelink:hover {
+  background: #357edd;
+  color: white;
+}
+
+.project {
+  border-bottom: 1px solid #cdecff;
+  float: left;
+  width: 100%;
+  border-bottom: 0;
+  font-size: .975rem;
+}
+
+.project h3 {
+  margin: 1.5rem 0 .8rem 0;
+  line-height: 1;
+}
+
+.project p {
+  margin-top: .3rem;
+}
+
+/* @media screen and (max-width: 30rem) { */
+/*   .project { */
+/*     width: 100%; */
+/*     height: auto; */
+/*     padding-right: 0; */
+/*   } */
+/* } */
+
+@media screen and (min-width: 50em) {
+  .project {
+    width: 50%;
+    height: 150px;
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .project {
+    width: 33%;
+    height: 170px;
+    padding-right: 3rem;
+  }
+}
