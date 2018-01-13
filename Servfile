@@ -26,8 +26,3 @@ case Host(_, _, _) =>
   path /brainloller  git(https://github.com/minond/brainloller.git)
   path /servies      git(https://github.com/minond/servies.git)
   path /unibrow      proxy(http://localhost:3001)
-
-  # Remove from this server after subdomains are working
-  path /txtimg       proxy(http://localhost:3002)
-  path /dearme       proxy(http://localhost:3003)
-  path /cp           proxy(http://localhost:3004)
