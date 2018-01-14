@@ -1,17 +1,13 @@
-# Installs and gives serv rights to run on privileged ports:
+# Installs, gives serv rights to run on privileged ports, and starts server:
 # go get github.com/minond/serv
 # sudo setcap 'cap_net_bind_service=+ep' $(which serv)
+# nohup serv &
 
-# Command for starting server:
-# nohup serv \
-#   -certDomain minond.co \
-#   -certDomain minond.xyz \
-#   -certDomain www.minond.co \
-#   -certDomain www.minond.xyz \
-#   -certDomain cp.minond.xyz \
-#   -certDomain txtimg.minond.xyz \
-#   -certDomain dearme.minond.xyz \
-#   -certCache cache &
+def cache ./cache
+
+def domains [ minond.co www.minond.co minond.xyz www.minond.xyz
+              cp.minond.xyz txtimg.minond.xyz dearme.minond.xyz
+            ]
 
 case Host(www, minond, xyz) => path / redirect(https://minond.xyz)
 case Host(www, minond, co)  => path / redirect(https://minond.co)
