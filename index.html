@@ -13,87 +13,121 @@
     <meta name="referrer" content="origin">
     <link rel="stylesheet" href="/css/tachyons.min.css">
     <link rel="stylesheet" href="/css/site.css">
+    <style>
+    .project {
+      border-bottom: 1px solid #cdecff;
+      float: left;
+      width: 100%;
+      border-bottom: 0;
+      font-size: .975rem;
+    }
+
+    .project h3 {
+      margin: 1.5rem 0 .8rem 0;
+      line-height: 1;
+    }
+
+    .project p {
+      margin-top: .3rem;
+    }
+
+    @media screen and (min-width: 50em) {
+      .project {
+        width: 50%;
+        height: 150px;
+        padding-right: 1rem;
+      }
+    }
+
+    @media screen and (min-width: 60em) {
+      .project {
+        width: 33%;
+        height: 170px;
+        padding-right: 3rem;
+      }
+    }
+    </style>
   </head>
   <body class="spectral">
-<section role="main">
-<div class="f4 pa3 pa5-ns border-box lh-copy">
-  <div class="mw7">
-    <div class="mr6-l">
-      <p class="mt0">
-        My name is <span class="b">Marcos Minond</span>, and I&rsquo;m a freelance
-        programmer living in Provo, Utah. I&rsquo;m a programmer who loves learning
-        about different programming languages and the lessons they have to
-        offer. My biggest area of interest right now is language design and
-        implementation. I also volunteer at the Refugee Education and Training
-        Center of Utah as an organizer and teacher for programming classes, and
-        mentor students throughout the week. If I&rsquo;m not programming or at the
-        refugee center I try to be biking or at a concert.
-      </p>
-      <p>
-        Checkout my
-        <a class="blue link sitelink" href="/Marcos Minond - Resume.pdf">resume</a>,
-        <a class="blue link sitelink" href="https://github.com/minond">GitHub</a>,
-        some select projects below, and if you&rsquo;d like to contact me to talk
-        about anything I&rsquo;ve listend on this page, just
-        <a class="blue link sitelink" href="mailto:minond.marcos+site@gmail.com">send me an email</a>.
-      </p>
-    </div>
-  </div>
+    <section role="main">
+      <div class="f4 pa3 pa5-ns border-box lh-copy">
+        <div class="mw7">
+          <div class="mr6-l">
+            <p class="mt0">
+              My name is <span class="b">Marcos Minond</span>, and I&rsquo;m a freelance
+              programmer living in Provo, Utah. I&rsquo;m a programmer who loves learning
+              about different programming languages and the lessons they have to
+              offer. My biggest area of interest right now is language design and
+              implementation. I also volunteer at the Refugee Education and Training
+              Center of Utah as an organizer and teacher for programming classes, and
+              mentor students throughout the week. If I&rsquo;m not programming or at the
+              refugee center I try to be biking or at a concert.
+            </p>
+            <p>
+              Checkout my
+              <a class="blue link sitelink" href="/Marcos Minond - Resume.pdf">resume</a>,
+              <a class="blue link sitelink" href="https://github.com/minond">GitHub</a>,
+              some select projects below, and if you&rsquo;d like to contact me to talk
+              about anything I&rsquo;ve listend on this page, just
+              <a class="blue link sitelink" href="mailto:minond.marcos+site@gmail.com">send me an email</a>.
+            </p>
+          </div>
+        </div>
 
-  <div class="cf lh-copy mw8 bt b--lightest-blue pt4-l">
-    <div class="project">
-      <h3><a class="blue link sitelink" href="https://github.com/UtahRETC">UtahRETC OSS</a></h3>
-      <p>Content for Java Programming/Oracle Certified Associate Java SE 8
-      Programmer course I teach at RETC.</p>
-    </div>
+        <div class="cf lh-copy mw8 bt b--lightest-blue pt4-l">
+          <div class="project">
+            <h3><a class="blue link sitelink" href="https://github.com/UtahRETC">UtahRETC OSS</a></h3>
+            <p>Content for Java Programming/Oracle Certified Associate Java SE 8
+            Programmer course I teach at RETC.</p>
+          </div>
 
-    <div class="project">
-      <h3><a class="blue link sitelink" href="https://github.com/minond/serv">serv</a></h3>
-      <p>A server that easily lets you serve over HTTPS, clone and serve git
-      repositories, static files, setup redirects, execute commands, and create
-      reverse proxies, use multiple subdomains.</p>
-    </div>
+          <div class="project">
+            <h3><a class="blue link sitelink" href="https://github.com/minond/serv">serv</a></h3>
+            <p>A server that easily lets you serve over HTTPS, clone and serve git
+            repositories, static files, setup redirects, execute commands, and create
+            reverse proxies, use multiple subdomains.</p>
+          </div>
 
-    <div class="project">
-      <h3><a class="blue link sitelink" href="https://github.com/consumr-project/cp">consumr project</a></h3>
-      <p>A crowd sourced platform to help us all learn a little bit more about
-      the things we buy, sell, and consume every day.</p>
-    </div>
+          <div class="project">
+            <h3><a class="blue link sitelink" href="https://github.com/consumr-project/cp">consumr project</a></h3>
+            <p>A crowd sourced platform to help us all learn a little bit more about
+            the things we buy, sell, and consume every day.</p>
+          </div>
 
-    <div class="project">
-      <h3><a class="blue link sitelink" href="https://github.com/minond/dearme">dearme</a></h3>
-      <p>The easiest way to journal ever. We send a few texts a day. You
-      answer. We add your Instagram photos. You have a journal.</p>
-    </div>
+          <div class="project">
+            <h3><a class="blue link sitelink" href="https://github.com/minond/dearme">dearme</a></h3>
+            <p>The easiest way to journal ever. We send a few texts a day. You
+            answer. We add your Instagram photos. You have a journal.</p>
+          </div>
 
-    <div class="project">
-      <h3><a class="blue link sitelink" href="/brainfuck">brainfuck</a></h3>
-      <p>Brainfuck interpreter and debugger. Runs your code while displaying
-      information about the program and allows you to set break-points in your
-      code as well.</p>
-    </div>
+          <div class="project">
+            <h3><a class="blue link sitelink" href="/brainfuck">brainfuck</a></h3>
+            <p>Brainfuck interpreter and debugger. Runs your code while displaying
+            information about the program and allows you to set break-points in your
+            code as well.</p>
+          </div>
 
-    <div class="project">
-      <h3><a class="blue link sitelink" href="/brainloller">brainloller</a></h3>
-      <p>Brainloller interpreter and editor. Runs your brainloller program
-      while displaying execution and memory information.</p>
-    </div>
+          <div class="project">
+            <h3><a class="blue link sitelink" href="/brainloller">brainloller</a></h3>
+            <p>Brainloller interpreter and editor. Runs your brainloller program
+            while displaying execution and memory information.</p>
+          </div>
 
-    <div class="project">
-      <h3><a class="blue link sitelink" href="/servies">servies</a></h3>
-      <p>Bash micro http framework, yes, bash, that uses netcat to listen for
-      and respond to HTTP requests.</p>
-    </div>
+          <div class="project">
+            <h3><a class="blue link sitelink" href="/servies">servies</a></h3>
+            <p>Bash micro http framework, yes, bash, that uses netcat to listen for
+            and respond to HTTP requests.</p>
+          </div>
 
-    <div class="project">
-      <h3><a class="blue link sitelink" href="https://github.com/minond/acm">acm</a></h3>
-      <p>acm (another configuration module) is a configuration reader. It
-      retrieves values from command line arguments, environment variables, and
-      local files.</p>
-    </div>
-  </div>
-</div>
-</section>
+          <div class="project">
+            <h3><a class="blue link sitelink" href="https://github.com/minond/acm">acm</a></h3>
+            <p>acm (another configuration module) is a configuration reader. It
+            retrieves values from command line arguments, environment variables, and
+            local files.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
