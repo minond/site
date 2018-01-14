@@ -12,14 +12,9 @@ def domains [ minond.co www.minond.co minond.xyz www.minond.xyz
 case Host(www, minond, xyz) => path / redirect(https://minond.xyz)
 case Host(www, minond, co)  => path / redirect(https://minond.co)
 
-case Host(txtimg, _, _) =>
-  path /             proxy(http://localhost:3002)
-
-case Host(dearme, _, _) =>
-  path /             proxy(http://localhost:3003)
-
-case Host(cp, _, _) =>
-  path /             proxy(http://localhost:3004)
+case Host(txtimg, _, _) => path / proxy(http://localhost:3002)
+case Host(dearme, _, _) => path / proxy(http://localhost:3003)
+case Host(cp, _, _)     => path / proxy(http://localhost:3004)
 
 case Host(_, _, _) =>
   path /             git(https://github.com/minond/site.git)
