@@ -14,18 +14,53 @@
     <link rel="stylesheet" href="/css/tachyons.min.css">
     <link rel="stylesheet" href="/css/site.css">
     <style>
-      body { line-height: 1.2; letter-spacing: 1px; max-width: 60rem; background: rgba(251, 255, 192, 0.1); }
-      h1 { margin-top: 0; margin-bottom: .5rem; font-weight: 300; }
-      cite { display: block }
-      cite + cite { margin-top: .1rem; }
+      body {
+        line-height: 1.2;
+        letter-spacing: 1px;
+        background: rgba(251, 255, 192, 0.1);
+      }
+
+      h1 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+        font-weight: 300;
+      }
+
+      cite {
+        display: block
+      }
+
+      .poem {
+        display: block;
+        padding-bottom: 10rem;
+      }
+
+      @media screen and (min-width: 50em) {
+        .poems {
+          display: table;
+        }
+
+        .poem {
+          display: table-cell;
+        }
+
+        .poem + .poem {
+          padding-left: 5rem;
+        }
+
+        .poem:last-child {
+          padding-right: 5rem;
+        }
+      }
     </style>
   </head>
   <body class="baskerville pa5 f5 lh-copy cf">
     <p class="pb5">Not my own. I just enjoy them.</p>
 
-    <div class="fl w-100 w-50-ns">
-    <h1>Oda al elefante</h1>
-    <cite>Original poem by Pablo Neruda.</cite>
+    <div class="poems">
+      <div class="poem">
+        <h1>Oda al elefante</h1>
+        <cite>Original poem by Pablo Neruda.</cite>
 <pre class="baskerville">
 Espesa bestia pura,
 San Elefante
@@ -169,11 +204,10 @@ el honor animal de tu estatura
 y aquellos dulces ojos de elefante
 que allí perdieron todo lo que habían amado.
 </pre>
-    </div>
-
-    <div class="fl w-100 w-50-ns">
-    <h1>Ode to the elephant</h1>
-    <cite>Translated by Ilan Stavans.</cite>
+      </div>
+      <div class="poem">
+        <h1>Ode to the elephant</h1>
+        <cite>Translated by Ilan Stavans.</cite>
 <pre class="baskerville">
 Thick, pristine beast,
 Saint Elephant,
@@ -303,6 +337,46 @@ measured only by your height,
 and those gentle eyes,
 deprived forever of all they had once loved.
 </pre>
+      </div>
+      <div class="poem">
+        <h1>Variation on the Word Sleep</h1>
+        <cite>By Margaret Atwood</cite>
+<pre class="baskerville">
+I would like to watch you sleeping,
+which may not happen.
+I would like to watch you,
+sleeping. I would like to sleep
+with you, to enter
+your sleep as its smooth dark wave
+slides over my head
+
+and walk with you through that lucent
+wavering forest of bluegreen leaves
+with its watery sun &amp; three moons
+towards the cave where you must descend,
+towards your worst fear
+
+I would like to give you the silver
+branch, the small white flower, the one
+word that will protect you
+from the grief at the center
+of your dream, from the grief
+at the center. I would like to follow
+you up the long stairway
+again &amp; become
+the boat that would row you back
+carefully, a flame
+in two cupped hands
+to where your body lies
+beside me, and you enter
+it as easily as breathing in
+
+I would like to be the air
+that inhabits you for a moment
+only. I would like to be that unnoticed
+&amp; that necessary.
+</pre>
+      </div>
     </div>
   </body>
   <script>
