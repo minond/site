@@ -21,4 +21,5 @@ case Host(_, _, _) =>
   path /brainfuck    git(https://github.com/minond/brainfuck.git)
   path /brainloller  git(https://github.com/minond/brainloller.git)
   path /servies      git(https://github.com/minond/servies.git)
+  path /automata     git(https://github.com/minond/automata.git)
   path /unibrow      proxy(http://localhost:3001)
