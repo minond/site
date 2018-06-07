@@ -22,4 +22,4 @@ case Host(_, _, _) =>
   path /brainloller  git(https://github.com/minond/brainloller.git)
   path /servies      git(https://github.com/minond/servies.git)
   path /automata     git(https://github.com/minond/automata.git)
-  path /unibrow      proxy(http://localhost:3001)
+  path /pti-talk     redirect(https://github.com/minond/parse-to-interpretation)
