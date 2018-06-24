@@ -27,14 +27,22 @@
       line-height: 1.25;
     }
 
-    .rectbody p {
-      margin-top: .3rem;
+    .projects .rectbody {
+      padding-bottom: 1.5rem;
     }
 
     @media screen and (min-width: 50em) {
+      .projects ul {
+        padding: 0
+      }
+
       .projects .rectbody {
         width: 50%;
-        height: 140px;
+        height: 120px;
+        padding-bottom: 0;
+        padding-left: 0;
+        margin-left: 0;
+        list-style: none;
       }
 
       .projects .rectbody:nth-child(even) {
@@ -84,90 +92,80 @@
           </div>
         </div>
 
-        <h2 class="ma0 mt4 bb b--lightest-blue pb3 dark-blue mw7">Projects</h2>
+        <h2 class="ma0 mb4 mt4 bb b--lightest-blue pb3 dark-blue mw7">Selected projects</h2>
         <div class="cf lh-copy mw7 projects">
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="https://github.com/UtahRETC">UtahRETC OSS</a></h3>
-            <p>
-              Content for Java Programming/Oracle Certified Associate Java SE 8
-              Programmer course I teach at RETC.
-            </p>
-          </div>
+          <ul>
+            <li class="rectbody">
+              <a class="blue link sitelink"
+              href="https://github.com/UtahRETC">UtahRETC OSS</a>, content for
+              Java Programming/Oracle Certified Associate Java SE 8 Programmer
+              course I teach at RETC.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="https://github.com/minond/diceshaker">IRL Random Number Generator</a></h3>
-            <p>
-              Web service that physically shakes a box with dice using a
-              Raspberry Pi, then snaps a photo which is analyzed for a result
-              and sent back to the user.
-            </p>
-          </div>
+            <li class="rectbody">
+              <a class="blue link sitelink"
+              href="https://github.com/minond/diceshaker">IRL Random Number
+              Generator</a>, a web service that physically shakes a box with
+              dice using a Raspberry Pi, then snaps a photo which is analyzed
+              for a result and sent back to the user.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="https://github.com/minond/serv">serv</a></h3>
-            <p>
-              A server with many features like easy HTTPS setup, subdomains,
-              serve git repositories, create reverse proxies, and more.
-            </p>
-          </div>
+            <li class="rectbody">
+              <a class="blue link sitelink"
+              href="https://github.com/minond/serv">serv</a> is a web server
+              with many features such as easy HTTPS setup, subdomains, serve
+              git repositories, create reverse proxies, and more.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="https://github.com/minond/bool">bool</a></h3>
-            <p>
-              Bool is a domain-specific reactive language and environment for
-              Boolean Algebra and Logic Gate Programming.
-            </p>
-          </div>
+            <li class="rectbody">
+              <a class="blue link sitelink"
+              href="https://github.com/minond/bool">bool</a> is a
+              domain-specific reactive language and environment for Boolean
+              Algebra and Logic Gate Programming.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="https://github.com/consumr-project/cp">consumr project</a></h3>
-            <p>
-              A crowd sourced platform to help us all learn a little bit more
-              about the things we buy, sell, and consume every day.
-            </p>
-          </div>
+            <li class="rectbody">
+              The <a class="blue link sitelink"
+              href="https://github.com/consumr-project/cp">consumr project</a>
+              is a crowd sourced platform to help us all learn a little bit
+              more about the things we buy, sell, and consume every day.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="https://github.com/minond/dearme">dearme</a></h3>
-            <p>
-              The easiest way to journal ever. We send a few texts a day. You
-              answer. We add your Instagram photos. You have a journal.
-            </p>
-          </div>
+            <li class="rectbody">
+              <a class="blue link sitelink"
+              href="https://github.com/minond/dearme">dearme</a> is the easiest
+              way to journal ever. We send a few texts a day. You answer. We
+              add your Instagram photos. You have a journal.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="/brainfuck">brainfuck</a></h3>
-            <p>
-              Brainfuck interpreter and debugger. Runs your code while
-              displaying information about the program and allows you to set
-              break-points in your code as well.
-            </p>
-          </div>
+            <li class="rectbody">
+              A <a class="blue link sitelink" href="/brainfuck">Brainfuck</a>
+              interpreter and debugger. Runs your code while displaying
+              information about the program and allows you to set break-points
+              in your code as well.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="/brainloller">brainloller</a></h3>
-            <p>
-              Brainloller interpreter and editor. Runs your brainloller program
-              while displaying execution and memory information.
-            </p>
-          </div>
+            <li class="rectbody">
+              A <a class="blue link sitelink"
+              href="/brainloller">Brainloller</a> interpreter and editor. Runs
+              your brainloller program while displaying execution and memory
+              information.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="/servies">servies</a></h3>
-            <p>
-              Bash micro http framework, yes, bash, that uses netcat to listen
-              for and respond to HTTP requests.
-            </p>
-          </div>
+            <li class="rectbody">
+              <a class="blue link sitelink" href="/servies">servies</a> is a
+              micro http framework in bash, yes, bash, that uses netcat to
+              listen for and respond to HTTP requests.
+            </li>
 
-          <div class="rectbody">
-            <h3><a class="blue link sitelink" href="https://github.com/minond/acm">acm</a></h3>
-            <p>
-              acm (another configuration module) is a configuration reader. It
-              retrieves values from command line arguments, environment
-              variables, and local files.
-            </p>
-          </div>
+            <li class="rectbody">
+              <a class="blue link sitelink"
+              href="https://github.com/minond/acm">acm</a> (another
+              configuration module) is a configuration reader. It retrieves
+              values from command line arguments, environment variables, and
+              local files.
+            </li>
+          <ul>
         </div>
       </div>
     </section>
