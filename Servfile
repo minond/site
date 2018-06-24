@@ -20,9 +20,11 @@ case Host(diceshaker, _, _) => path / proxy(http://localhost:3005)
 
 case Host(_, _, _) =>
   path /             git(https://github.com/minond/site.git)
+
   path /brainfuck    git(https://github.com/minond/brainfuck.git)
   path /brainloller  git(https://github.com/minond/brainloller.git)
   path /servies      git(https://github.com/minond/servies.git)
   path /automata     git(https://github.com/minond/automata.git)
+
+  path /pti          git(https://github.com/minond/parse-to-interpretation.git)
   path /pti-talk     redirect(https://github.com/minond/parse-to-interpretation)
-  path /diceshaker   proxy(http://localhost:3005)
