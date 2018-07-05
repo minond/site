@@ -2,6 +2,7 @@
 
 body {
   cursor: default;
+  font-size: .975rem;
 }
 
 .spectral {
@@ -28,4 +29,40 @@ body {
 .sitelink:hover {
   background: #357edd;
   color: white;
+}
+
+.rectbody {
+  float: left;
+}
+
+.rectbody h3 {
+  margin: 1.5rem 0 .8rem 0;
+  line-height: 1.25;
+}
+
+.projects .rectbody {
+  padding-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 50em) {
+  .projects ul {
+    padding: 0
+  }
+
+  .projects .rectbody {
+    width: 50%;
+    height: 120px;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-left: 0;
+    list-style: none;
+  }
+
+  .projects .rectbody:nth-child(even) {
+    padding-left: 1.5rem;
+  }
+
+  .projects .rectbody:nth-child(odd) {
+    padding-right: 1.5rem;
+  }
 }
