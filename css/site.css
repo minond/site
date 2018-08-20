@@ -49,6 +49,10 @@ body {
 }
 
 @media screen and (min-width: 50em) {
+  .projects {
+    max-width: 48rem;
+  }
+
   .projects ul {
     padding: 0
   }
