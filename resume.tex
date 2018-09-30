@@ -1,0 +1,77 @@
+\documentclass[10pt]{article}
+
+\usepackage{fontspec}
+\usepackage[
+  margin=1in,
+  paperwidth=8.5in,
+  paperheight=11in
+]{geometry}
+
+\usepackage{hyperref}
+\urlstyle{same}
+
+\usepackage{titlesec}
+\titleformat{\section}
+  {\large}     % style
+  {}           % prefix
+  {0pt}        % prefix to title spacing
+  {\strong}    % formatting
+
+\pagenumbering{gobble}
+
+\newcommand{\experience}[3] {
+  \noindent \textit{\strong{#1}, #2} \hfill #3
+}
+
+\newcommand{\job}[4] {
+  \noindent \textit{\strong{#1}, #2} \hfill #3
+  \vspace{.05in}
+
+  #4
+  \vspace{.2in}\\
+}
+
+\begin{document}
+\begin{flushleft}
+
+\huge\textbf{Marcos Minond}
+\vspace{.3in}
+\normalsize
+
+(801) 787-5096\\
+\href{mailto:minond.marcos@gmail.com}{minond.marcos@gmail.com}\\
+\href{https://github.com/minond}{https://github.com/minond}\\
+\href{https://minond.xyz}{https://minond.xyz}
+\vspace{.1in}
+
+\section{Summary}
+
+I am incredibly passionate about programming. Even if money wasn’t a concern I would still be programming. While I enjoy working on a range of CS related topics, my biggest area of interest right now is language design and implementation. I also volunteer at the Refugee Education and Training Center of Utah as an organizer and teacher for programming classes, and mentor students throughout the week.
+
+\section{Skills}
+
+Go, Scala/Java, TypeScript/JavaScript/Node.js, Elm/React/D3.js, software design, process automation, CI, bash/PHP/Linux, distributed systems.
+
+\section{Education}
+
+\experience{Utah Valley University}{BSc, Computer Science (Incomplete)}{2009 - 2013}
+
+\section{Volunteering}
+
+\experience{Computer Science Teacher and Tutor}{Utah Department of Workforce Services}{2016 - Present}
+
+\section{Experience}
+
+\job{Software Engineer}{MX}{April 2018 - Present}{Working with/on Go, NATS, RPC, distributed systems.}
+\job{Freelance Programmer}{Minond, LLC}{May 2017 - April 2018}{Previous positions have given me experience in breaking down problems, developing ideas, proving they are good and worth working on, converting them down into manageable tasks, and, of course, making them real. I help companies do these things.}
+\job{Software Engineer Team Lead}{Domo, Inc.}{December 2014 - May 2017}{I started at Domo working on new features as a front-end engineer. Among others, those features included a new zero state experience for the product, an automated report scheduler, and also building out the code infrastructure for automated end-to-end UI tests. I then moved to another team to work as a Scala programmer and ended up taking over that team as the team lead. Got to learn a lot in this position, such as why good logging is a wonderful thing.}
+\job{Senior Software Engineer}{InsideSales.com}{January 2014 - November 2014}{Team Lead of the PowerStandings team. The code and product quality are the first priority, and our build process is always as automated as possible. I have given trainings and written documentation so other teams can start to incorporate some of the technologies my team uses (e.g. AngularJS, SASS, Grunt, bower).}
+
+\newpage
+
+\job{DevOps Engineer}{InsideSales.com}{June 2013 - January 2014}{I was tasked with heading the newly created DevOps team to help improve the department’s development process. While in this position, I trained and gave my co-workers the tools needed to be able to automatically test and check the quality of their code. I came up with coding standard, style guides, and setup Go and Jenkins jobs to run tests and deploy our applications to QA environments.}
+\job{Software Engineer}{InsideSales.com}{January 2012 - June 2013}{I worked on new features for our LMP product and Salesforce application. A product named Intelligent Dedupe was one of my favorite to work on; It was able to take a client’s database, search for duplicate records by comparing multiple data points, and then merge all the data - which spanned across multiple tables - into a new record. The client had the ability to customize the way the searching and merging algorithms worked, and they were also able to un-merge records afterwards.}
+\job{Implementation Team Member \& Manager}{InsideSales.com}{January 2009 - December 2011}{I joined the department when it was first being created so I was an integral part in helping the department grow. I helped by creating the processes and standards that would later be followed by the team I managed. I took care of all of the technological aspects of implementation. One of the biggest takeaways from this position was that I learned how to breakdown big jobs into smaller tasks in order to be worked on by a team.}
+
+\end{flushleft}
+\end{document}
