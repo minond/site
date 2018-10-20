@@ -1,10 +1,10 @@
 # Same sum type, different meaning
 
 Recently I wrote a small Scheme like language for a presentation I gave at a
-local conference, and since the majority of the presentation was covering the
-implementation of the language, it had to be concise. As a result I ended up
-stumbling across a pattern in Scala that I'm very happy with since it allowed
-me to share data types all through out the lexing to the evaluation stages.
+local conference, the point of the presentation was to talk about the whole
+implementation, it had to be concise. As a result, I ended up stumbling across
+a pattern in Scala that I'm very happy with since it allowed me to share types
+all through out the lexing to the evaluation stages.
 
 Let's say we have a grammar like this one:
 
