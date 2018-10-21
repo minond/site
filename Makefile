@@ -1,6 +1,4 @@
-.PHONY: resume.tex
-
-resume.tex:
+Marcos-Minond-Resume.pdf: resume.tex
 	xelatex -output-format=pdf resume.tex
 	mv resume.pdf Marcos-Minond-Resume.pdf
 	$(MAKE) clean
