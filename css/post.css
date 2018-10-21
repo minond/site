@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Spectral|IBM+Plex+Mono');
+
+body {
+  cursor: default;
+  font-size: 1.2rem;
+}
+
+.content {
+  max-width: 48rem;
+  padding: 1rem;
+  font-family: 'Spectral', serif;
+}
+
+h1 {
+  line-height: 1.2;
+  font-family: baskerville, serif;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.content > h1:first-child,
+.content > h2:first-child,
+.content > h3:first-child,
+.content > h4:first-child {
+  margin-top: 0;
+}
+
+pre {
+  background-color: rgba(0, 0, 0, .02);
+  margin: 2rem -1rem;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-top: 1px solid #b7b7b7;
+  border-bottom: 1px solid #b7b7b7;
+}
+
+pre > code {
+  display: block;
+  overflow: auto;
+  line-height: 1.5;
+}
+
+code {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  color: #357edd;
+}
+
+/* small */
+@media screen and (max-width: 45em) {
+}
+
+/* not small */
+@media screen and (min-width: 45em) {
+  h1 {
+    font-size: 2.75rem;
+  }
+}
+
+/* medium */
+@media screen and (min-width: 45em) and (max-width: 60em) {
+}
+
+/* large */
+@media screen and (min-width: 60em) {
+  .content {
+    padding: 4rem;
+  }
+}
