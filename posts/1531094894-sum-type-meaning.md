@@ -13,7 +13,7 @@ Let me start by giving an example of the pattern I'm used to running into and
 using myself. Let's say we have a grammar like this one:
 
 ```ebnf
-arith = num '+' | '-' num ;
+arith = num op num ;
 op    = '+' | '-' ;
 num   = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 ```
@@ -32,4 +32,15 @@ case class Arithmetic(lhs: Number, op: Operator, rhs: Number)
   extends Expression
 ```
 
-At this point
+At this point we're left with data structures that are more than good enough to
+use as output of a parse and even an evaluator, the start running into problems
+as soon as we want to start evaluating number, or allow arbitrarily nested
+expressions.
+
+Imagine the definition the `evaluate` function, which takes something and
+returns a result. The signature looks something like this, `evaluate ⇒ a' ⇒
+Number`. And what is `a'`? Well, it will most often be something of the type
+`Arithmetic`, but it could also be a `Number`.
+
+We can't accept an `Arithmetic | Number` type, since it's not allowed. We could
+turn `Number` into an `Expression` instead and accept all `Expression` types.
