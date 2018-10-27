@@ -7,84 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/tachyons.min.css">
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Spectral|IBM+Plex+Mono');
-
-    body {
-      cursor: default;
-      font-size: 1.2rem;
-    }
-
-    .content {
-      max-width: 42rem;
-      padding: 1rem;
-      transition: padding .25s;
-      font-family: 'Spectral', serif;
-    }
-
-    h1 {
-      line-height: 1.2;
-      font-family: baskerville, serif;
-      font-weight: 500;
-      font-size: 2rem;
-    }
-
-    .content > h1:first-child,
-    .content > h2:first-child,
-    .content > h3:first-child,
-    .content > h4:first-child {
-      margin-top: 0;
-    }
-
-    pre {
-      background-color: rgba(0, 0, 0, .02);
-      margin: 2rem -1rem;
-      padding: .5rem 1rem;
-      font-size: 1rem;
-      border-top: 1px solid #b7b7b7;
-      border-bottom: 1px solid #b7b7b7;
-    }
-
-    pre > code {
-      display: block;
-      overflow: auto;
-      line-height: 1.5;
-    }
-
-    code {
-      font-family: 'IBM Plex Mono', monospace;
-    }
-
-    p {
-      line-height: 1.5;
-    }
-
-    a {
-      color: #357edd;
-    }
-
-    /* small */
-    @media screen and (max-width: 45em) {
-    }
-
-    /* not small */
-    @media screen and (min-width: 45em) {
-      h1 {
-        font-size: 2.75rem;
-      }
-    }
-
-    /* medium */
-    @media screen and (min-width: 45em) and (max-width: 60em) {
-    }
-
-    /* large */
-    @media screen and (min-width: 60em) {
-      .content {
-        padding: 4rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/css/post.css">
 </head>
 <body>
 <div class="content">
@@ -106,7 +29,7 @@ throughout the execution.</p>
 <p>Let me start by giving an example of the pattern I&rsquo;m used to running into and
 using myself. Let&rsquo;s say we have a grammar like this one:</p>
 
-<pre><code class="language-ebnf">arith = num '+' | '-' num ;
+<pre><code class="language-ebnf">arith = num op num ;
 op    = '+' | '-' ;
 num   = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 </code></pre>
@@ -124,11 +47,22 @@ case class Arithmetic(lhs: Number, op: Operator, rhs: Number)
   extends Expression
 </code></pre>
 
-<p>At this point</p>
+<p>At this point we&rsquo;re left with data structures that are more than good enough to
+use as output of a parse and even an evaluator, the start running into problems
+as soon as we want to start evaluating number, or allow arbitrarily nested
+expressions.</p>
+
+<p>Imagine the definition the <code>evaluate</code> function, which takes something and
+returns a result. The signature looks something like this, <code>evaluate ⇒ a' ⇒
+Number</code>. And what is <code>a'</code>? Well, it will most often be something of the type
+<code>Arithmetic</code>, but it could also be a <code>Number</code>.</p>
+
+<p>We can&rsquo;t accept an <code>Arithmetic | Number</code> type, since it&rsquo;s not allowed. We could
+turn <code>Number</code> into an <code>Expression</code> instead and accept all <code>Expression</code> types.</p>
 
 </div>
 
-<footer class="bt ph3 ph4-ns mt1 mt4-ns b--light-gray spectral pv1">
+<footer class="bt ph3 ph3-m ph5-ns mt1 mt4-ns b--light-gray spectral pv1">
   <div class="container">
     <p class="lh-copy w-50-ns">
     ~ <a href="/" class="link red dim">Marcos Minond</a>
