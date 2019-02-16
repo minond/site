@@ -63,7 +63,7 @@ footer {
 
   .projects .rectbody {
     width: 50%;
-    height: 140px;
+    height: 150px;
     padding-bottom: 0;
     padding-left: 0;
     margin-left: 0;
@@ -81,4 +81,5 @@ footer {
 
 .content {
   max-width: 50rem;
+  font-size: 18px;
 }
