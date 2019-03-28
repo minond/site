@@ -54,32 +54,25 @@ footer {
 
 @media screen and (min-width: 50em) {
   .projects {
-    max-width: 48rem;
+    display: flex;
   }
 
   .projects ul {
-    padding: 0
+    width: 49%;
+    display: inline-block;
   }
 
-  .projects .rectbody {
-    width: 50%;
-    height: 150px;
-    padding-bottom: 0;
-    padding-left: 0;
-    margin-left: 0;
-    list-style: none;
+  .projects ul {
+    margin-right: 20px;
   }
 
-  .projects .rectbody:nth-child(even) {
-    padding-left: 1.5rem;
-  }
-
-  .projects .rectbody:nth-child(odd) {
-    padding-right: 1.5rem;
+  .projects ul + ul {
+    margin-left: 20px;
+    margin-right: 0;
   }
 }
 
 .content {
-  max-width: 50rem;
+  max-width: 60rem;
   font-size: 18px;
 }
