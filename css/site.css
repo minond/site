@@ -52,27 +52,7 @@ footer {
   padding-left: 20px;
 }
 
-@media screen and (min-width: 50em) {
-  .projects {
-    display: flex;
-  }
-
-  .projects ul {
-    width: 49%;
-    display: inline-block;
-  }
-
-  .projects ul {
-    margin-right: 20px;
-  }
-
-  .projects ul + ul {
-    margin-left: 20px;
-    margin-right: 0;
-  }
-}
-
 .content {
-  max-width: 60rem;
+  max-width: 48rem;
   font-size: 18px;
 }
