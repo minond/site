@@ -41,7 +41,7 @@ Notice the top-level `Token` type, with it's two children `Operator` and
 well -- this will be useful later on when we start treating certain tokens as
 valid expressions. Let's see this hierarchy in a more visual form:
 
-![Class diagram](/posts/1531094894-sum-type-meaning.svg)
+![Class diagram](/posts/1531094894-adt-type-meaning.svg)
 
 With the diagram it's easier to see that when we are working with a `Token`
 type, we have to know how to handle both `Number`, a concrete type, and
