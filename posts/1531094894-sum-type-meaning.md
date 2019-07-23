@@ -24,7 +24,11 @@ tokens, an AST, or runtime data, you may opt for a solution like the following:
 
 ```scala
 sealed trait Token
-case class Operator(lexeme: String) extends Token
+
+sealed trait Operator extends Token
+case object Plus extends Operator
+case object Minus extends Operator
+case object Mult extends Operator
 
 sealed trait Expr
 case class Number(num: Double) extends Token with Expr
@@ -32,11 +36,11 @@ case class Arithmetic(lhs: Expr, op: Operator, rhs: Expr) extends Expr
 ```
 
 Notice the top-level `Token` type, with it's two children `Operator` and
-`Number`, and `Expr` with `Arithmetic` and `Number` as well. `Number` is
-special since it is both a `Token` and an `Expr` -- this will be useful later
-on when we start treating certain tokens as valid expressions. With this, we
-are able to define three functions which act as the full interpreter for our
-language:
+`Number`, and `Expr` with `Arithmetic` and `Number` as well. `Operator` and
+`Number` are special, since they are both separate types and of type `Token` as
+well -- this will be useful later on when we start treating certain tokens as
+valid expressions. With this, we are able to define three functions which act
+as the full interpreter for our language:
 
 - `tokenize`, which is defined as `String => list of Token`,
 - `parse`, which is defined as `list of Token => Expr`, and
@@ -56,8 +60,9 @@ def tokenize(input: String): Iterator[Token] = {
   val chars = input.toIterator.buffered
   for (c <- chars.toIterator.buffered if !c.isWhitespace)
     yield c match {
-      case '+' | '-' | '*' =>
-        Operator(c.toString)
+      case '+' => Plus
+      case '-' => Minus
+      case '*' => Mult
 
       case n if n.isDigit =>
         Number((n + takeWhile[Char](chars, { _.isDigit }).mkString).toDouble)
@@ -147,12 +152,11 @@ without nested expressions:
 def eval(expr: Expr): Either[String, Expr] =
   expr match {
     case num : Number => Right(num)
-    case Arithmetic(Number(lhs), Operator(op), Number(rhs)) =>
+    case Arithmetic(Number(lhs), op, Number(rhs)) =>
       op match {
-        case "+" => Right(Number(lhs + rhs))
-        case "-" => Right(Number(lhs - rhs))
-        case "*" => Right(Number(lhs * rhs))
-        case _   => Left(s"error: invalid operator `$op`")
+        case Plus  => Right(Number(lhs + rhs))
+        case Minus => Right(Number(lhs - rhs))
+        case Mult  => Right(Number(lhs * rhs))
       }
   }
 ```
@@ -170,17 +174,16 @@ And now for the second take where we handle nested expressions:
 def eval(expr: Expr): Either[String, Number] =
   expr match {
     case num : Number => Right(num)
-    case Arithmetic(lhsExpr, Operator(op), rhsExpr) =>
+    case Arithmetic(lhsExpr, op, rhsExpr) =>
       (eval(lhsExpr), eval(rhsExpr)) match {
         case (Left(err), _) => Left(err)
         case (_, Left(err)) => Left(err)
 
         case (Right(Number(lhs)), Right(Number(rhs))) =>
           op match {
-            case "+" => Right(Number(lhs + rhs))
-            case "-" => Right(Number(lhs - rhs))
-            case "*" => Right(Number(lhs * rhs))
-            case _   => Left(s"error: invalid operator `$op`")
+            case Plus  => Right(Number(lhs + rhs))
+            case Minus => Right(Number(lhs - rhs))
+            case Mult  => Right(Number(lhs * rhs))
           }
       }
   }

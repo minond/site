@@ -1,5 +1,8 @@
 sealed trait Token
-case class Operator(lexeme: String) extends Token
+sealed trait Operator extends Token
+case object Plus extends Operator
+case object Minus extends Operator
+case object Mult extends Operator
 sealed trait Expr
 case class Number(num: Double) extends Token with Expr
 case class Arithmetic(lhs: Expr, op: Operator, rhs: Expr) extends Expr
@@ -8,8 +11,9 @@ def tokenize(input: String): Iterator[Token] = {
   val chars = input.toIterator.buffered
   for (c <- chars.toIterator.buffered if !c.isWhitespace)
     yield c match {
-      case '+' | '-' | '*' =>
-        Operator(c.toString)
+      case '+' => Plus
+      case '-' => Minus
+      case '*' => Mult
 
       case n if n.isDigit =>
         Number((n + takeWhile[Char](chars, { _.isDigit }).mkString).toDouble)
@@ -52,12 +56,11 @@ def parse(tokens: List[Token]): Either[String, Expr] =
 def eval(expr: Expr): Either[String, Expr] =
   expr match {
     case num : Number => Right(num)
-    case Arithmetic(Number(lhs), Operator(op), Number(rhs)) =>
+    case Arithmetic(Number(lhs), op, Number(rhs)) =>
       op match {
-        case "+" => Right(Number(lhs + rhs))
-        case "-" => Right(Number(lhs - rhs))
-        case "*" => Right(Number(lhs * rhs))
-        case _   => Left(s"error: invalid operator `$op`")
+        case Plus  => Right(Number(lhs + rhs))
+        case Minus => Right(Number(lhs - rhs))
+        case Mult  => Right(Number(lhs * rhs))
       }
   }
 
@@ -67,19 +70,20 @@ parse(tokenize("40 + 2")).flatMap(eval)
 def eval(expr: Expr): Either[String, Number] =
   expr match {
     case num : Number => Right(num)
-    case Arithmetic(lhsExpr, Operator(op), rhsExpr) =>
+    case Arithmetic(lhsExpr, op, rhsExpr) =>
       (eval(lhsExpr), eval(rhsExpr)) match {
         case (Left(err), _) => Left(err)
         case (_, Left(err)) => Left(err)
 
         case (Right(Number(lhs)), Right(Number(rhs))) =>
           op match {
-            case "+" => Right(Number(lhs + rhs))
-            case "-" => Right(Number(lhs - rhs))
-            case "*" => Right(Number(lhs * rhs))
-            case _   => Left(s"error: invalid operator `$op`")
+            case Plus  => Right(Number(lhs + rhs))
+            case Minus => Right(Number(lhs - rhs))
+            case Mult  => Right(Number(lhs * rhs))
           }
       }
   }
 
 parse(tokenize("10 * 4 + 2")).flatMap(eval)
+
+parse(tokenize("10 a 4 + 2")).flatMap(eval)
