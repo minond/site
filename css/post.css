@@ -75,12 +75,19 @@ a {
 
 /* medium */
 @media screen and (min-width: 45em) and (max-width: 60em) {
+  .content img {
+    transform: scale(0.75);
+  }
 }
 
 /* large */
 @media screen and (min-width: 60em) {
   .content {
     padding: 4rem;
+  }
+
+  .content img {
+    transform: scale(0.65);
   }
 
   pre:hover {
