@@ -14,7 +14,7 @@ Let's say we have a language that supports only arithmetic expressions:
 ```ebnf
 expr  = num | arith ;
 arith = expr op expr ;
-op    = '+' | '-' ;
+op    = '+' | '-' | '*' ;
 num   = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 ```
 
@@ -53,7 +53,7 @@ def tokenize(input: String): Iterator[Token] = {
   val chars = input.toIterator.buffered
   for (c <- chars.toIterator.buffered if !c.isWhitespace)
     yield c match {
-      case '+' | '-' =>
+      case '+' | '-' | '*' =>
         Operator(c.toString)
 
       case n if n.isDigit =>
@@ -89,8 +89,8 @@ both of which are checked for in the code below.
 ```scala
 def parse(tokens: List[Token]): Either[String, Expr] =
   tokens match {
-    case Nil => Left("invalid: empty input")
-    case (_: Operator) :: _ => Left("invalid: cannot start expression with operator")
+    case Nil                   => Left("invalid: empty input")
+    case (_: Operator) :: _    => Left("invalid: cannot start expression with operator")
     case (token : Number) :: _ => Right(token)
   }
 ```
@@ -117,14 +117,13 @@ def parse(tokens: List[Token]): Either[String, Expr] =
       Right(num)
     case (lhs : Number) :: (op : Operator) :: (rhs : Number) :: Nil =>
       Right(Arithmetic(lhs, op, rhs))
-    case (lhs : Number) :: (op1 : Operator) :: (rhs : Number) :: (op2 : Operator) :: t =>
-      val rhs = parse(t).fold(err => return Left(err),
-                              ok => ok)
-      Right(Arithmetic(Arithmetic(lhs, op1, rhs), op2, rhs))
+    case (lhs1 : Number) :: (op1 : Operator) :: (rhs1 : Number) :: (op2 : Operator) :: t =>
+      val rhs2 = parse(t).fold(err => return Left(err), ok => ok)
+      Right(Arithmetic(Arithmetic(lhs1, op1, rhs1), op2, rhs2))
 
     // Invalid expressions
     case Nil => Left("syntax error: empty input")
-    case _ => Left("syntax error: expressions are binary expressions or single numbers")
+    case _   => Left("syntax error: expressions are binary expressions or single numbers")
   }
 ```
 
@@ -149,7 +148,44 @@ def eval(expr: Expr): Either[String, Expr] =
       op match {
         case "+" => Right(Number(lhs + rhs))
         case "-" => Right(Number(lhs - rhs))
+        case "*" => Right(Number(lhs * rhs))
         case _   => Left(s"error: invalid operator `$op`")
       }
   }
+```
+
+Let's try it out to make sure things work:
+
+```text
+scala> parse(tokenize("40 + 2")).flatMap(eval)
+res27: scala.util.Either[String,Expr] = Right(Number(42.0))
+```
+
+And now for the second take where we handle nested expressions:
+
+```scala
+def eval(expr: Expr): Either[String, Number] =
+  expr match {
+    case num : Number => Right(num)
+    case Arithmetic(lhsExpr, Operator(op), rhsExpr) =>
+      (eval(lhsExpr), eval(rhsExpr)) match {
+        case (Left(err), _) => Left(err)
+        case (_, Left(err)) => Left(err)
+
+        case (Right(Number(lhs)), Right(Number(rhs))) =>
+          op match {
+            case "+" => Right(Number(lhs + rhs))
+            case "-" => Right(Number(lhs - rhs))
+            case "*" => Right(Number(lhs * rhs))
+            case _   => Left(s"error: invalid operator `$op`")
+          }
+      }
+  }
+```
+
+And a quick check that it works:
+
+```text
+scala> parse(tokenize("10 * 4 + 2")).flatMap(eval)
+res3: scala.util.Either[String,Number] = Right(Number(42.0))
 ```

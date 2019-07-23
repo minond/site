@@ -8,7 +8,7 @@ def tokenize(input: String): Iterator[Token] = {
   val chars = input.toIterator.buffered
   for (c <- chars.toIterator.buffered if !c.isWhitespace)
     yield c match {
-      case '+' | '-' =>
+      case '+' | '-' | '*' =>
         Operator(c.toString)
 
       case n if n.isDigit =>
@@ -26,8 +26,8 @@ def takeWhile[T](src: BufferedIterator[T], predicate: (T) => Boolean): List[T] =
 
 def parse(tokens: List[Token]): Either[String, Expr] =
   tokens match {
-    case Nil => Left("invalid: empty input")
-    case (_: Operator) :: _ => Left("invalid: cannot start expression with operator")
+    case Nil                   => Left("invalid: empty input")
+    case (_: Operator) :: _    => Left("invalid: cannot start expression with operator")
     case (token : Number) :: _ => Right(token)
   }
 
@@ -39,14 +39,13 @@ def parse(tokens: List[Token]): Either[String, Expr] =
       Right(num)
     case (lhs : Number) :: (op : Operator) :: (rhs : Number) :: Nil =>
       Right(Arithmetic(lhs, op, rhs))
-    case (lhs : Number) :: (op1 : Operator) :: (rhs : Number) :: (op2 : Operator) :: t =>
-      val rhs = parse(t).fold(err => return Left(err),
-                              ok => ok)
-      Right(Arithmetic(Arithmetic(lhs, op1, rhs), op2, rhs))
+    case (lhs1 : Number) :: (op1 : Operator) :: (rhs1 : Number) :: (op2 : Operator) :: t =>
+      val rhs2 = parse(t).fold(err => return Left(err), ok => ok)
+      Right(Arithmetic(Arithmetic(lhs1, op1, rhs1), op2, rhs2))
 
     // Invalid expressions
     case Nil => Left("syntax error: empty input")
-    case _ => Left("syntax error: expressions are binary expressions or single numbers")
+    case _   => Left("syntax error: expressions are binary expressions or single numbers")
   }
 
 
@@ -57,8 +56,30 @@ def eval(expr: Expr): Either[String, Expr] =
       op match {
         case "+" => Right(Number(lhs + rhs))
         case "-" => Right(Number(lhs - rhs))
+        case "*" => Right(Number(lhs * rhs))
         case _   => Left(s"error: invalid operator `$op`")
       }
   }
 
+
 parse(tokenize("40 + 2")).flatMap(eval)
+
+def eval(expr: Expr): Either[String, Number] =
+  expr match {
+    case num : Number => Right(num)
+    case Arithmetic(lhsExpr, Operator(op), rhsExpr) =>
+      (eval(lhsExpr), eval(rhsExpr)) match {
+        case (Left(err), _) => Left(err)
+        case (_, Left(err)) => Left(err)
+
+        case (Right(Number(lhs)), Right(Number(rhs))) =>
+          op match {
+            case "+" => Right(Number(lhs + rhs))
+            case "-" => Right(Number(lhs - rhs))
+            case "*" => Right(Number(lhs * rhs))
+            case _   => Left(s"error: invalid operator `$op`")
+          }
+      }
+  }
+
+parse(tokenize("10 * 4 + 2")).flatMap(eval)
