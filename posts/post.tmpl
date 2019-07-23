@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>{{.Title}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/css/tachyons.min.css">
   <link rel="stylesheet" href="/css/site.css">
@@ -14,6 +14,10 @@
 <!-- THIS DOCUMENT IS AUTO GENERATED. DO NOT EDIT. -->
 <!-- THIS DOCUMENT IS AUTO GENERATED. DO NOT EDIT. -->
 <!-- THIS DOCUMENT IS AUTO GENERATED. DO NOT EDIT. -->
+
+<h1>{{.Title}}</h1>
+
+<h5>{{.Date.Format "January 02, 2006"}}</h5>
 
 {{.Content}}
 </div>
