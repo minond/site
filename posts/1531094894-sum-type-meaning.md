@@ -48,7 +48,7 @@ finally expressions.
 We can bring this full circle by building our interpreter, starting with
 `tokenize` and a helper:
 
-```
+```scala
 def tokenize(input: String): Iterator[Token] = {
   val chars = input.toIterator.buffered
   for (c <- chars.toIterator.buffered if !c.isWhitespace)
@@ -72,7 +72,7 @@ def takeWhile[T](src: BufferedIterator[T], predicate: (T) => Boolean): List[T] =
 
 And to test things are working as expected:
 
-```
+```text
 scala> tokenize("123").toList
 res32: List[Token] = List(Number(123))
 
@@ -86,7 +86,7 @@ expressions yet, but it is complete in the sense that it handles every possible
 input. A list of tokens could only be made up of `Operator`'s and `Number`'s,
 both of which are checked for in the code below.
 
-```
+```scala
 def parse(tokens: List[Token]): Either[String, Expr] =
   tokens match {
     case Nil => Left("invalid: empty input")
@@ -99,7 +99,7 @@ If we wanted to test out the exhaustive checks provided by the compiler, we
 could comment out any of those cases and the results would be a warning (or
 error) such as:
 
-```
+```text
 <pastie>:18: warning: match may not be exhaustive.
 It would fail on the following input: List(Number(_))
   tokens match {
@@ -109,7 +109,7 @@ It would fail on the following input: List(Number(_))
 For an implementation that is able to parse arithmetic expressions, we could do
 something like:
 
-```
+```scala
 def parse(tokens: List[Token]): Either[String, Expr] =
   tokens match {
     // Valid expressions
@@ -131,7 +131,7 @@ def parse(tokens: List[Token]): Either[String, Expr] =
 And we overload `parse` to take an `Iterator`, making it easier to work with
 the rest of the code:
 
-```
+```scala
 def parse(tokens: Iterator[Token]): Either[String, Expr] = parse(tokens.toList)
 ```
 
@@ -141,7 +141,7 @@ which converts expressions into simpler representations. For the first take, we
 implementing a version which only handles numbers and arithmetic expressions
 without nested expressions:
 
-```
+```scala
 def eval(expr: Expr): Either[String, Expr] =
   expr match {
     case num : Number => Right(num)
