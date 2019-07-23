@@ -45,7 +45,10 @@ language:
 This leaves us with a flow of data that goes from a strings, to tokens, to
 finally expressions.
 
-We can bring this full circle by building our interpreter, starting with
+
+## Implementation
+
+We can bring this full circle by building our interpreter. Starting with
 `tokenize` and a helper:
 
 ```scala
