@@ -209,14 +209,38 @@ def eval(expr: Expr): Either[String, Number] =
 
 The second implementation is needed since `Arithmetic` is able to hold `Expr`
 values on the left or right hand side. And since these values have yet to be
-evaluated, we do so before completing the evaluation of the first expression.
-For quick check that it works:
+evaluated, we do so before completing the evaluation of the first expression:
 
 ```text
 scala> parse(tokenize("10 * 4 + 2")).flatMap(eval)
 res3: scala.util.Either[String,Number] = Right(Number(42.0))
 ```
 
-## Discussion
+## Conclusion
 
+Class hierarchies and ADTs are nothing new. We could represent the very same
+hierarchy in another language, and keep most of our signatures the same as
+well. The same could be said about ADTs. What's interesting about this is the
+combination of the two, where we are able to represent the flow of data as data
+structures and do so in a way where the type system has the ability to help us
+ensure we're handling all of the possible cases.
 
+In addition, we are able to reuse types where it makes sense to do so. The
+`Number` type is a valid return value for a tokenizer, a parser, and an
+evaluator, and we can convey this by making it both a `Token` and an `Expr` at
+the same time. If our language were bigger, perhaps the same could be said
+about other scalar types.
+
+And like with anything else, reusability can be taken too far. Once the use or
+meaning of a type (or value) starts to change, or the type becomes so large and
+can only be extended in future phases, it makes less sense to continue using
+the same type. For example, if our language had types and we needed to
+construct an ADT with typing information, the data structures used in the
+parsing phase will not be enough during the type checking phase, and extending
+the types so that they could be using in the type checker would expand the
+scope too much, leaving you with the information that you need but completely
+stripping them of their ergonomics.
+
+With that in mind, there are many instances where the types and their semantics
+overlap, and there is a need to represent the distinct sets, their union, and
+their intersections. When this is the case, OOP and ADTs are a great mix.
