@@ -47,6 +47,16 @@ With the diagram it's easier to see that when we are working with a `Token`
 type, we have to know how to handle both `Number`, a concrete type, and
 `Operator`, a sum type.
 
+Another way of thinking about this is using sets:
+
+```
+Token        = {Number, Operator}
+Expr         = {Number, Arithmetic}
+Operator     = {Plus, Minus, Mult}
+
+where Number = Expr ∩ Token
+```
+
 With this, we are able to define three functions which act as the full
 interpreter for our language:
 
