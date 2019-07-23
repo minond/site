@@ -12,7 +12,8 @@ parsing, and evaluation steps.
 Let's say we have a language that supports only arithmetic expressions:
 
 ```ebnf
-arith = num op num ;
+expr  = num | arith ;
+arith = expr op expr ;
 op    = '+' | '-' ;
 num   = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 ```
@@ -26,7 +27,7 @@ sealed trait Token
 case class Operator(lexeme: String) extends Token
 
 sealed trait Expr
-case class Number(lexeme: String) extends Token with Expr
+case class Number(num: Double) extends Token with Expr
 case class Arithmetic(lhs: Expr, op: Operator, rhs: Expr) extends Expr
 ```
 
@@ -56,7 +57,7 @@ def tokenize(input: String): Iterator[Token] = {
         Operator(c.toString)
 
       case n if n.isDigit =>
-        Number(n + takeWhile[Char](chars, { _.isDigit }).mkString)
+        Number((n + takeWhile[Char](chars, { _.isDigit }).mkString).toDouble)
     }
 }
 
@@ -82,7 +83,8 @@ res33: List[Token] = List(Number(1), Operator(+), Number(2))
 Now we can move on to `parse`, which we previously defined as `list of Token =>
 Expr`. This is an incomplete implementation since it doesn't parse arithmetic
 expressions yet, but it is complete in the sense that it handles every possible
-input.
+input. A list of tokens could only be made up of `Operator`'s and `Number`'s,
+both of which are checked for in the code below.
 
 ```
 def parse(tokens: List[Token]): Either[String, Expr] =
@@ -94,12 +96,60 @@ def parse(tokens: List[Token]): Either[String, Expr] =
 ```
 
 If we wanted to test out the exhaustive checks provided by the compiler, we
-could comment out any of those cases and the results would be a compiler
-warning (or error) such as:
+could comment out any of those cases and the results would be a warning (or
+error) such as:
 
 ```
 <pastie>:18: warning: match may not be exhaustive.
 It would fail on the following input: List(Number(_))
   tokens match {
   ^
+```
+
+For an implementation that is able to parse arithmetic expressions, we could do
+something like:
+
+```
+def parse(tokens: List[Token]): Either[String, Expr] =
+  tokens match {
+    // Valid expressions
+    case (num : Number) :: Nil =>
+      Right(num)
+    case (lhs : Number) :: (op : Operator) :: (rhs : Number) :: Nil =>
+      Right(Arithmetic(lhs, op, rhs))
+    case (lhs : Number) :: (op1 : Operator) :: (rhs : Number) :: (op2 : Operator) :: t =>
+      val rhs = parse(t).fold(err => return Left(err),
+                              ok => ok)
+      Right(Arithmetic(Arithmetic(lhs, op1, rhs), op2, rhs))
+
+    // Invalid expressions
+    case Nil => Left("syntax error: empty input")
+    case _ => Left("syntax error: expressions are binary expressions or single numbers")
+  }
+```
+
+And we overload `parse` to take an `Iterator`, making it easier to work with
+the rest of the code:
+
+```
+def parse(tokens: Iterator[Token]): Either[String, Expr] = parse(tokens.toList)
+```
+
+At this point we're handling all possible inputs and output in the parsing
+phase. We can now follow similar patterns for implementing the `eval` function,
+which converts expressions into simpler representations. For the first take, we
+implementing a version which only handles numbers and arithmetic expressions
+without nested expressions:
+
+```
+def eval(expr: Expr): Either[String, Expr] =
+  expr match {
+    case num : Number => Right(num)
+    case Arithmetic(Number(lhs), Operator(op), Number(rhs)) =>
+      op match {
+        case "+" => Right(Number(lhs + rhs))
+        case "-" => Right(Number(lhs - rhs))
+        case _   => Left(s"error: invalid operator `$op`")
+      }
+  }
 ```
