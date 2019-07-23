@@ -39,8 +39,16 @@ Notice the top-level `Token` type, with it's two children `Operator` and
 `Number`, and `Expr` with `Arithmetic` and `Number` as well. `Operator` and
 `Number` are special, since they are both separate types and of type `Token` as
 well -- this will be useful later on when we start treating certain tokens as
-valid expressions. With this, we are able to define three functions which act
-as the full interpreter for our language:
+valid expressions. Let's see this hierarchy in a more visual form:
+
+![Class diagram](/posts/1531094894-sum-type-meaning.svg)
+
+With the diagram it's easier to see that when we are working with a `Token`
+type, we have to know how to handle both `Number`, a concrete type, and
+`Operator`, a sum type.
+
+With this, we are able to define three functions which act as the full
+interpreter for our language:
 
 - `tokenize`, which is defined as `String => list of Token`,
 - `parse`, which is defined as `list of Token => Expr`, and
@@ -189,9 +197,16 @@ def eval(expr: Expr): Either[String, Number] =
   }
 ```
 
-And a quick check that it works:
+The second implementation is needed since `Arithmetic` is able to hold `Expr`
+values on the left or right hand side. And since these values have yet to be
+evaluated, we do so before completing the evaluation of the first expression.
+For quick check that it works:
 
 ```text
 scala> parse(tokenize("10 * 4 + 2")).flatMap(eval)
 res3: scala.util.Either[String,Number] = Right(Number(42.0))
 ```
+
+## Discussion
+
+
