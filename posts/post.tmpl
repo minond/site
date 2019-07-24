@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{.Title}}</title>
+  <title>{{.Metadata.Title}}</title>
+  <meta name="og:title" content="{{.Metadata.Title}}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="og:description" content="{{.Metadata.Abstract}}">
+  <meta name="description" content="{{.Metadata.Abstract}}">
   <link rel="stylesheet" href="/css/tachyons.min.css">
   <link rel="stylesheet" href="/css/site.css">
   <link rel="stylesheet" href="/css/post.css">
@@ -15,7 +18,7 @@
 <!-- THIS DOCUMENT IS AUTO GENERATED. DO NOT EDIT. -->
 <!-- THIS DOCUMENT IS AUTO GENERATED. DO NOT EDIT. -->
 
-<h1>{{.Title}}</h1>
+<h1>{{.Metadata.Title}}</h1>
 
 <h5>{{.Date.Format "January 02, 2006"}}</h5>
 
