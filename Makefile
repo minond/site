@@ -1,5 +1,5 @@
 SERVER_PORT ?= 8081
-FSPRESS_FLAGS = -glob 'posts/[0-9]*.md' -post-template posts/post.tmpl -catalog posts/catalog.csv
+FSPRESS_FLAGS = -post-glob 'posts/[0-9]*.md' -post-template posts/post.tmpl -post-catalog posts/catalog.csv
 
 compile: docs/Marcos-Minond-Resume.pdf images
 	fspressc $(FSPRESS_FLAGS) -out posts
