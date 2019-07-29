@@ -1,13 +1,36 @@
-Nothing makes you miss ADTs more than using languages that don't have them.
-Scala supports ADTs using sealed traits, allowing the user to define child
-classes which act as the type constructors, and since the parent class is
-sealed, the compiler is able to check for exhaustiveness when using pattern
-matching.
+There are instances where the semantics of distinct types overlap. Through ADTs
+and OOP, it is possible to represent this using different sets of types, while
+still being able to work with the set unions and intersections in a way that is
+type safe.
 
-In addition to all of this, Scala's support for OOP makes for some really
-interesting uses of ADTs with inheritance. For me, the best example to show
-this off is a small compiler with shared data structures for the lexing,
-parsing, and evaluation steps.
+
+## Introduction
+
+[ADTs (algebraic data
+types)](https://en.wikipedia.org/wiki/Algebraic_data_type) is a feature that
+many functional programming languages have. An ADT is an abstract type made up
+of concrete types. The concrete types act as the constructors for the top-level
+type, meaning they are needed in order to create a value of the top-level type.
+Many of these same languages support a feature called [pattern
+matching](https://en.wikipedia.org/wiki/Pattern_matching), which is a form of
+checking and matching the pattern of a given value.
+
+Languages like Scala, Standard ML, and OCaml are able to check for the
+exhaustiveness of a pattern match, meaning they are able to check that the
+patterns in a pattern match expression account for all possible values of the
+input. For example, in Scala there exists an `Option[T]` [sum
+type](https://en.wikipedia.org/wiki/Tagged_union) which is made up of two
+types: `None` and `Some[T]`. When matching a value of type `Option[T]`, the
+Scala compiler is able to check for the existence of  patterns matching both of
+the possible values (and any additional matching ensuring `T` in `Some` is
+accounted for as well.)
+
+Exhaustive checking acts as a safety net that ensures that all possible values
+are handled, and there are no runtime errors due to unhandled values.
+
+Scala's support for OOP makes for some really interesting uses of distinct ADTs
+with inheritance. A good example to show this off is a small interpreter with
+shared data structures for the lexing, parsing, and evaluation steps.
 
 Let's say we have a language that supports only arithmetic expressions:
 
@@ -19,7 +42,12 @@ num   = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 ```
 
 It's a simple grammar but it's one that demonstrates the usefulness of ADTs
-plus OOP. Finding yourself in a situation where you have to model this as
+plus OOP.
+
+
+## Data Structures
+
+Finding yourself in a situation where you have to model this as
 tokens, an AST, or runtime data, you may opt for a solution like the following:
 
 ```scala
