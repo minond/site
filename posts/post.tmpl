@@ -25,6 +25,18 @@
 {{.Content}}
 </div>
 
+<script>
+if ("hljs" in window) {
+  document.querySelectorAll("pre").forEach((el) => {
+    if (el.children[0]) {
+      el.children[0].className = el.children[0].className.replace("language-", "");
+      el.className = el.children[0].className;
+    }
+    hljs.highlightBlock(el)
+  })
+}
+</script>
+
 <footer class="bt ph3 ph3-m ph5-ns mt1 mt4-ns b--light-gray spectral pv1">
   <div class="container">
     <p class="lh-copy w-50-ns">

@@ -35,10 +35,10 @@ shared data structures for the lexing, parsing, and evaluation steps.
 Let's say we have a language that supports only arithmetic expressions:
 
 ```ebnf
-expr  = num | arith ;
-arith = expr op expr ;
-op    = '+' | '-' | '*' ;
-num   = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
+expr  ::= num | arith ;
+arith ::= expr op expr ;
+op    ::= '+' | '-' | '*' ;
+num   ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 ```
 
 It's a simple grammar but it's one that demonstrates the usefulness of ADTs
@@ -292,3 +292,8 @@ completely stripping the constructors of their ergonomics.
 With that in mind, there are many instances where types and their semantics
 overlap, and there is a need to represent the distinct sets, their union, and
 their intersections. When this is the case, OOP and ADTs are a great mix.
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/styles/ascetic.min.css">
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/languages/scala.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/languages/ebnf.min.js"></script>
