@@ -72,7 +72,7 @@ valid expressions. Let's see this hierarchy in a more visual form:
 ![Class diagram](/posts/1531094894-adt-type-meaning.svg)
 
 With the diagram it's easier to see that when we are working with a `Token`
-type, we have to know how to handle both `Number`, a concrete type, and
+type, we have to know how to handle both `Number`, a type constructor, and
 `Operator`, a sum type.
 
 Another way of thinking about this is using sets:
@@ -93,7 +93,9 @@ interpreter for our language:
 - `eval`, which is defined as `Expr => Expr`.
 
 This leaves us with a flow of data that goes from a strings, to tokens, to
-finally expressions.
+finally expressions. Since `Number` is both a `Token` and an `Expr`, we will
+see it in use in all three functions, all in a type safe way which ensures any
+pattern matching is exhaustive.
 
 
 ## Implementation
@@ -124,7 +126,8 @@ def takeWhile[T](src: BufferedIterator[T], predicate: (T) => Boolean): List[T] =
     src.next :: takeWhile(src, predicate)
 ```
 
-And to test things are working as expected:
+Here is the first use of `Number`, a valid `Token`. To test things are working
+as expected:
 
 ```text
 scala> tokenize("123").toList
@@ -135,7 +138,7 @@ res33: List[Token] = List(Number(1), Operator(+), Number(2))
 ```
 
 Now we can move on to `parse`, which we previously defined as `list of Token =>
-Expr`. This is an incomplete implementation since it doesn't parse arithmetic
+Expr`. Below is an incomplete implementation since it doesn't parse arithmetic
 expressions yet, but it is complete in the sense that it handles every possible
 input. A list of tokens could only be made up of `Operator`'s and `Number`'s,
 both of which are checked for in the code below.
@@ -148,6 +151,13 @@ def parse(tokens: List[Token]): Either[String, Expr] =
     case (token : Number) :: _ => Right(token)
   }
 ```
+
+Note that since we're working with lists we have to pattern match the list
+itself before we can get to the values it holds. You can read the matching
+above as follows: first matching `Nil`, which represents an empty `List`, then
+match a list with an `Operator` as the first element and anything else
+(including an empty list) afterwards, finally do the same but for lists with a
+`Number` as the first element in the list.
 
 If we wanted to test out the exhaustive checks provided by the compiler, we
 could comment out any of those cases and the results would be a warning (or
@@ -164,6 +174,9 @@ For an implementation that is able to parse arithmetic expressions, we could do
 something like:
 
 ```scala
+def parse(tokens: Iterator[Token]): Either[String, Expr] =
+  parse(tokens.toList)
+
 def parse(tokens: List[Token]): Either[String, Expr] =
   tokens match {
     // Valid expressions
@@ -181,14 +194,15 @@ def parse(tokens: List[Token]): Either[String, Expr] =
   }
 ```
 
-And we overload `parse` to take an `Iterator`, making it easier to work with
-the rest of the code:
+_We overload `parse` to take an `Iterator`, making it easier to work with the
+rest of the code._
 
-```scala
-def parse(tokens: Iterator[Token]): Either[String, Expr] = parse(tokens.toList)
-```
+There are more matches in this expression but they operate on the list of
+`Token`s in the same way that the previous example does -- all we are doing is
+peeking at the values at the start of the list and ignoring what ever values
+may come afterwards.
 
-At this point we're handling all possible inputs and output in the parsing
+At this point we're handling all possible inputs and outputs in the parsing
 phase. We can now follow similar patterns for implementing the `eval` function,
 which converts expressions into simpler representations. For the first take, we
 implementing a version which only handles numbers and arithmetic expressions
@@ -207,7 +221,9 @@ def eval(expr: Expr): Either[String, Expr] =
   }
 ```
 
-Let's try it out to make sure things work:
+Since the only constructors for `Expr` are `Number` and `Arithmetic`, this is
+an exhaustive match of all possible inputs. Let's try it out to make sure
+things work:
 
 ```text
 scala> parse(tokenize("40 + 2")).flatMap(eval)
@@ -244,13 +260,18 @@ scala> parse(tokenize("10 * 4 + 2")).flatMap(eval)
 res3: scala.util.Either[String,Number] = Right(Number(42.0))
 ```
 
+Notice the continuous use of the `Number` type constructor. Because `Number` is
+both a `Token` and an `Expr`, we are able to use it throughout the whole
+process of evaluation, and all in a way where the compiler is there to help us.
+
+
 ## Conclusion
 
 Class hierarchies and ADTs are nothing new. We could represent the very same
 hierarchy in another language, and keep most of our signatures the same as
-well. The same could be said about ADTs. What's interesting about this is the
-combination of the two, where we are able to represent the flow of data as data
-structures and do so in a way where the type system has the ability to help us
+well. The same could be said about ADTs. What's distinguishing about this is
+the combination of the two, allowing us to able to represent the flow of data
+as data structures and do so in a way where the type system has the ability to
 ensure we're handling all of the possible cases.
 
 In addition, we are able to reuse types where it makes sense to do so. The
@@ -260,15 +281,14 @@ the same time. If our language were bigger, perhaps the same could be said
 about other scalar types.
 
 And like with anything else, reusability can be taken too far. Once the use or
-meaning of a type (or value) starts to change, or the type becomes so large and
-can only be extended in future phases, it makes less sense to continue using
-the same type. For example, if our language had types and we needed to
-construct an ADT with typing information, the data structures used in the
-parsing phase will not be enough during the type checking phase, and extending
-the types so that they could be using in the type checker would expand the
-scope too much, leaving you with the information that you need but completely
-stripping them of their ergonomics.
+meaning of a type (or value) starts to change an increase in scope, it makes
+less sense to continue using the same type. For example, if our language had
+typing information that we needed to pass around, the data structures used in
+the parsing phase will not be enough during the type checking phase. And
+extending the types so that they could be used in the type checker would expand
+the scope too much, leaving you with the information that you need but
+completely stripping the constructors of their ergonomics.
 
-With that in mind, there are many instances where the types and their semantics
+With that in mind, there are many instances where types and their semantics
 overlap, and there is a need to represent the distinct sets, their union, and
 their intersections. When this is the case, OOP and ADTs are a great mix.
