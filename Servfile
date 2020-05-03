@@ -7,7 +7,8 @@ def cache ./cache
 
 def domains [ minond.co www.minond.co minond.xyz www.minond.xyz
               cp.minond.xyz txtimg.minond.xyz dearme.minond.xyz
-              diceshaker.minond.xyz log.minond.xyz
+              diceshaker.minond.xyz log.minond.xyz logs.minond.xyz
+              trace.minond.xyz
             ]
 
 case Host(www, minond, xyz) => path / redirect(https://minond.xyz)
@@ -17,7 +18,8 @@ case Host(txtimg, _, _)     => path / proxy(http://localhost:3002)
 case Host(dearme, _, _)     => path / proxy(http://localhost:3003)
 case Host(cp, _, _)         => path / proxy(http://localhost:3004)
 case Host(diceshaker, _, _) => path / proxy(http://localhost:3005)
-case Host(log, _, _)        => path / proxy(http://localhost:3006)
+case Host(logs, _, _)       => path / proxy(http://localhost:3007)
+case Host(trace, _, _)     => path / proxy(http://localhost:16686)
 
 case Host(_, _, _) =>
   path /             git(https://github.com/minond/site.git)
