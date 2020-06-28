@@ -8,7 +8,7 @@ def cache ./cache
 def domains [ minond.co www.minond.co minond.xyz www.minond.xyz
               cp.minond.xyz txtimg.minond.xyz dearme.minond.xyz
               diceshaker.minond.xyz log.minond.xyz logs.minond.xyz
-              trace.minond.xyz
+              puller.minond.xyz trace.minond.xyz
             ]
 
 case Host(www, minond, xyz) => path / redirect(https://minond.xyz)
