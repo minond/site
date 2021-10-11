@@ -30,5 +30,5 @@ case Host(_, _, _) =>
   path /servies      git(https://github.com/minond/servies.git)
   path /automata     git(https://github.com/minond/automata.git)
 
-  path /pti          git(https://github.com/minond/parse-to-interpretation.git)
-  path /pti-talk     redirect(https://github.com/minond/parse-to-interpretation)
+  path /talks        git(https://github.com/minond/talks.git)
+  path /pti-talk     redirect(https://github.com/minond/talks/tree/master/parse-to-interpretation)
