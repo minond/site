@@ -18,7 +18,7 @@ BoldItalicFont={Baskerville SemiBold Italic}
 \urlstyle{same}
 
 \newcommand{\SectionTitle}[1] {
-  \vspace{.3in}
+  \vspace{.25in}
   \textbf{\large #1}
   \vspace{.1in}
 }
@@ -28,6 +28,13 @@ BoldItalicFont={Baskerville SemiBold Italic}
 }
 
 \newcommand{\DescribedEntry}[4] {
+  \noindent \textit{\strong{#1}, #2} \hfill #3
+  \vspace{.05in}
+
+  #4
+}
+
+\newcommand{\DescribedEntryLine}[4] {
   \noindent \textit{\strong{#1}, #2} \hfill #3
   \vspace{.05in}
 
@@ -51,8 +58,8 @@ BoldItalicFont={Baskerville SemiBold Italic}
 
 \SectionTitle{Summary}
 
-I am incredibly passionate about Computer Science and Software Engineering.
-Even if money wasn’t a concern I would still be programming. While I enjoy
+I am incredibly passionate about computer science and software engineering.
+Even if money wasn’t a concern, I would still be programming. While I enjoy
 working on a range of CS related topics, my main area of interest right
 now is language design and implementation. I also volunteer at the Refugee
 Education and Training Center of Utah as an organizer and teacher for
@@ -69,35 +76,36 @@ distributed systems, observability, planning and project management.
 \SectionTitle{Experience}
 
 \DescribedEntry{Staff Engineer}{MX}{April 2018 - Present}{
-Led team that released MXinsights. The service powering the product scaled to over 7mil users; Led and owned new initiative to improve our client's dev UX, this included building SDKs for major mobile platforms. Evangelized solutions and enhancements this team worked on to internal and external parties.
+Played an active part in shaping our platform as both an individual contributor and a mentor to individuals and teams designing and developing solutions for a rapidly evolving industry and ecosystem.
 
-\vspace{.1in}
-
-Played an active part in shaping the platform powering our product suite by helping and mentoring teams and individuals architect, design, and develop solutions for an evolving ecosystem.
+\begin{itemize}
+\item Member of the Enterprise Technical Office group where I dealt with high urgency client requirements and advised in project architecture and problem solving platform-wide.
+\item Led and owned new initiative to improve our client's developer experience. This included building SDKs for major mobile platforms. Evangelized this team's solutions and enhancements to internal and external parties.
+\item Technical lead to over a dozen backend and frontend engineers in the design and development of MXinsights, a financial feed product currently serving over 7 million users.
+\end{itemize}
 }
-\vspace{.2in}
-\DescribedEntry{Software Engineer, Freelance}{Minond, LLC}{May 2017 - April 2018}{Previous positions have given me experience in breaking down problems, developing and vetting ideas, and, of course, building products. I help companies do these things.}
-\vspace{.2in}
-\DescribedEntry{Software Engineer, Tech Lead}{Domo, Inc.}{December 2014 - May 2017}{Worked on Domo Apps platform as a backend Scala engineer and on core Dashboard product as a frontend engineer.}
-\vspace{.2in}
-% \DescribedEntry{Software Engineer, Tech Lead}{InsideSales.com}{January 2014 - November 2014}{Led the PowerStandings team which took MVP and made it production ready.}
+\vspace{.02in}
+\DescribedEntryLine{Software Engineer, Freelance}{Minond, LLC}{May 2017 - April 2018}{Helped various companies dismantle and analyze problems, develop and vet new ideas and solutions, and build mission-critical products.}
+\vspace{.15in}
+\DescribedEntryLine{Software Engineer, Tech Lead}{Domo, Inc.}{December 2014 - May 2017}{Worked on Domo Apps platform as a backend Scala engineer and on core Dashboard product as a frontend engineer.}
+\vspace{.15in}
 \DescribedEntryTitle{Software Engineer, Tech Lead}{InsideSales.com}{January 2014 - November 2014}
-\vspace{.2in}
+\vspace{.15in}
 \DescribedEntryTitle{Software Engineer, DevOps}{InsideSales.com}{June 2013 - January 2014}
-\vspace{.2in}
+\vspace{.15in}
 \DescribedEntryTitle{Software Engineer}{InsideSales.com}{January 2012 - June 2013}
-\vspace{.2in}
+\vspace{.15in}
 \DescribedEntryTitle{Implementation Team Member \& Manager}{InsideSales.com}{January 2009 - December 2011}
 
 
 \SectionTitle{Education}
 
-\Entry{Utah Valley University}{BSc, Computer Science (Incomplete)}{2009 - 2013}
+\Entry{Utah Valley University}{BS, Computer Science (Incomplete)}{2009 - 2013}
 
 
 \SectionTitle{Volunteering}
 
-\DescribedEntry{Programming Class Organizer}{Utah Department of Workforce Services}{2016 - Present}{I organize and teach programming classes for refugees and members of my community.}
+\DescribedEntryLine{Programming Class Organizer}{Utah Department of Workforce Services}{2016 - Present}{I organize and teach programming classes for refugees and members of my community.}
 
 \end{flushleft}
 \end{document}
