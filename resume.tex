@@ -17,9 +17,9 @@ BoldItalicFont={Baskerville SemiBold Italic}
 \usepackage{hyperref}
 \urlstyle{same}
 
-\newcommand{\SectionTitle}[1] {
-  \vspace{.25in}
-  \textbf{\large #1}
+\newcommand{\SectionTitle}[2][.2in] {
+  \vspace{#1}
+  \textbf{\large #2}
   \vspace{.1in}
 }
 
@@ -29,14 +29,14 @@ BoldItalicFont={Baskerville SemiBold Italic}
 
 \newcommand{\DescribedEntry}[4] {
   \noindent \textit{\strong{#1}, #2} \hfill #3
-  \vspace{.05in}
+  \vspace{.035in}
 
   #4
 }
 
 \newcommand{\DescribedEntryLine}[4] {
   \noindent \textit{\strong{#1}, #2} \hfill #3
-  \vspace{.05in}
+  \vspace{.035in}
 
   #4 \\
 }
@@ -50,13 +50,13 @@ BoldItalicFont={Baskerville SemiBold Italic}
 \begin{flushleft}
 
 \huge{Marcos Minond} \normalsize
-  \hfill \href{https://minond.xyz}{https://minond.xyz} \\
-  \hfill \href{https://github.com/minond}{https://github.com/minond}
+\hfill \href{https://minond.xyz}{https://minond.xyz} \\
+\hfill \href{https://github.com/minond}{https://github.com/minond}
 
 \normalsize
 
 
-\SectionTitle{Summary}
+\SectionTitle[.1in]{Summary}
 
 With over a decade of hands-on experience in both frontend and backend
 application development, I bring a deep-rooted passion for computer science
@@ -65,62 +65,49 @@ unwavering, driven by an innate curiosity that goes beyond money. My
 expertise lies in building distributed systems and designing scalable backend
 solutions.
 
-% , as well as language and compiler design and implementation.
-
 \vspace{.08in}
 
-Beyond my technical prowess, I extend my impact to the
-community by volunteering at the Refugee Education and Training Center of
-Utah. Here, I take on roles as an organizer and instructor for programming
-courses, shaping the next generation of aspiring developers through guidance
-and mentorship.
-
-% I am incredibly passionate about computer science and software engineering.
-% Even if money wasn’t a concern, I would still be programming. My main areas of
-% expertise and interest are distributed systems, backend systems, and language
-% design and implementation. I also volunteer at the Refugee Education and
-% Training Center of Utah as an organizer and teacher for programming classes
-% where I teach classes and mentor students.
+Beyond my technical prowess, I extend my impact to the community by
+volunteering at the Utah Refugee Center. Here, I take on roles as an
+organizer and instructor for programming courses, shaping the next generation
+of aspiring developers through guidance and mentorship.
 
 \SectionTitle{Skills}
 
 Scala, Go, Ruby, Python, TypeScript/JavaScript, Elm, bash, Linux, software
-design and architecture, process automation, continuous integration,
-distributed systems, observability, planning and project management.
+design and architecture, compilers, parsing, codegen, process automation,
+continuous integration, distributed systems, observability, project management.
 
-% Scala, Go, Ruby, Python, TypeScript/JavaScript, Elm, bash, Linux. Software
-% design, backend architecture, distributed systems, observability. Process
-% automation, continuous integration. Planning, project management.
+\SectionTitle{Independent Work}
+
+I've independently developed compilers and programming languages featuring
+Hindley–Milner type inference, custom opcode instruction sets, multi-pass
+compilation, and integration with LLVM. My projects demonstrate experience
+and knowledge in formal language specifications, parsing, syntax and semantic
+analysis, and code generation. This highlights my ability to innovate within
+Programming Language Theory and compiler construction.
 
 \SectionTitle{Experience}
 
 \DescribedEntryTitle{Software Engineer, Freelance}{Minond, LLC}{January 2023 - Present}
-\vspace{.15in}
+\vspace{.1in}
 \DescribedEntry{Staff Software Engineer}{MX}{April 2018 - December 2022}{
 Played an active part in shaping our platform as both an individual contributor and a mentor to individuals and teams designing and developing solutions for a rapidly evolving industry and ecosystem.
-
 \begin{itemize}
+\setlength\itemsep{.0in}
 \item Member of the Enterprise Technical Office group where I dealt with high urgency client requirements and advised in project architecture and problem solving platform-wide.
 \item Led and owned new initiative to improve our client's developer experience. This included building SDKs for major mobile platforms. Evangelized this team's solutions and enhancements to internal and external parties.
 \item Technical lead to over a dozen backend and frontend engineers in the design and development of MXinsights, a financial feed product currently serving over 7 million users.
 \end{itemize}
 }
 \vspace{.02in}
-\DescribedEntryLine{Software Engineer, Freelance}{Minond, LLC}{May 2017 - April 2018}{Helped various companies dismantle and analyze problems, develop and vet new ideas and solutions, and build mission-critical products.}
-\vspace{.15in}
+\DescribedEntryTitle{Software Engineer, Freelance}{Minond, LLC}{May 2017 - April 2018}
+\vspace{.1in}
 \DescribedEntryTitle{Software Engineer, Tech Lead}{Domo, Inc.}{December 2014 - May 2017}
-\vspace{.15in}
-
+\vspace{.1in}
 \DescribedEntryTitle{Software Engineer}{InsideSales.com}{January 2012 - November 2014}
-% \DescribedEntryTitle{Software Engineer, Tech Lead}{InsideSales.com}{January 2014 - November 2014}
-% \vspace{.15in}
-% \DescribedEntryTitle{Software Engineer, DevOps}{InsideSales.com}{June 2013 - January 2014}
-% \vspace{.15in}
-% \DescribedEntryTitle{Software Engineer}{InsideSales.com}{January 2012 - June 2013}
-
-\vspace{.15in}
+\vspace{.1in}
 \DescribedEntryTitle{Implementation Team Member \& Manager}{InsideSales.com}{January 2009 - December 2011}
-
 
 \SectionTitle{Education}
 
