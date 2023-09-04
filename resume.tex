@@ -19,8 +19,10 @@ BoldItalicFont={Baskerville SemiBold Italic}
 
 \usepackage{etoolbox}
 \newtoggle{MODEPLT}
+\newtoggle{MODELONG}
 
 \toggletrue{MODEPLT}
+\toggletrue{MODELONG}
 
 \newcommand{\SectionTitle}[2][.2in] {
   \vspace{#1}
@@ -36,7 +38,7 @@ BoldItalicFont={Baskerville SemiBold Italic}
   \noindent \textit{\strong{#1}, #2} \hfill #3
   \vspace{.035in}
 
-  #4
+  #4\leavevmode\\
 }
 
 \newcommand{\DescribedEntryLine}[4] {
@@ -108,13 +110,47 @@ Played an active part in shaping our platform as both an individual contributor 
 \end{itemize}
 }
 \vspace{.02in}
-\DescribedEntryTitle{Software Engineer, Freelance}{Minond, LLC}{May 2017 - April 2018}
+\iftoggle{MODELONG}{
+  \DescribedEntry{Software Engineer, Freelance}{Minond, LLC}{May 2017 - April 2018}{
+    Helped companies dismantle and analyze problems, develop and vet new ideas and solutions, and build mission-critical products.
+  }
+}{
+  \DescribedEntryTitle{Software Engineer, Freelance}{Minond, LLC}{May 2017 - April 2018}
+}
 \vspace{.1in}
-\DescribedEntryTitle{Software Engineer, Tech Lead}{Domo, Inc.}{December 2014 - May 2017}
+\iftoggle{MODELONG}{
+  \DescribedEntry{Software Engineer, Tech Lead}{Domo, Inc.}{December 2014 - May 2017}{
+    I started at Domo working on new features as a front-end engineer. I worked on a new zero state experience for the product, a report builder and scheduler, and more. I then joined another team as a backend Scala engineer and later became that team's lead. Got to learn a lot in this position, such as why good logging is a wonderful thing.
+  }
+}{
+  \DescribedEntryTitle{Software Engineer, Tech Lead}{Domo, Inc.}{December 2014 - May 2017}
+}
 \vspace{.1in}
-\DescribedEntryTitle{Software Engineer}{InsideSales.com}{January 2012 - November 2014}
+\iftoggle{MODELONG}{
+  \DescribedEntry{Software Engineer}{InsideSales.com}{January 2012 - November 2014}{
+    Lead of the PowerStandings team. Worked with my team to making the MVP production ready, improving the interface and user experience, and making the application standalone.
+    \\ \vspace{.08in}
+    Worked on bring in a more "DevOps-y" mindset into the department. Helped improve the development and deployment process for lots of services. Learned a lot about ops, systems, Linux.
+    \\ \vspace{.08in}
+    I worked on new features for our LMP product. Some of these were a custom report engine and an intelligent data deduplication tool. The Intelligent Deduplication project was one of my favorites. It was able to take a client's database, search for duplicate records by comparing multiple data points, then merge all the data, which spanned across multiple tables, into a new record. The client had the ability to customize the way the searching and merging algorithms worked, and they were also able to un-merge records afterwards.
+  }
+}{
+  \DescribedEntryTitle{Software Engineer}{InsideSales.com}{January 2012 - November 2014}
+}
 \vspace{.1in}
-\DescribedEntryTitle{Implementation Team Member \& Manager}{InsideSales.com}{January 2009 - December 2011}
+\iftoggle{MODELONG}{
+  \DescribedEntry{Implementation Team Member \& Manager}{InsideSales.com}{January 2009 - December 2011}{
+    I managed a team of Implementation Technicians. As a team we made further improvements to my previous work. One of the biggest takeaways from this position was that I learned how to breakdown big jobs into smaller tasks so that they could be worked on by a team.
+    \\ \vspace{.08in}
+    Along with my managerial responsibilities and helping with the day-to-day work, I also trained all new members and made sure quality standard were met.
+    \\ \vspace{.08in}
+    I took care of all of the technological aspects of the implementation. This included, but was not limited to, things such as data imports and automated sanitation, inbound and outbound call-flow setup, automated work flows, and some custom development as well.
+    \\ \vspace{.08in}
+    I joined the department when it was first being created, so I was a big part in helping the department grow. I helped by creating the processes and standards that would later be followed by the team I managed. This was my first exposure to a professional environment, and it was a great learning experience. This is also the job that got me interested in programming.
+  }
+}{
+  \DescribedEntryTitle{Implementation Team Member \& Manager}{InsideSales.com}{January 2009 - December 2011}
+}
 
 \SectionTitle{Education}
 
