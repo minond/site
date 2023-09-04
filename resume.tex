@@ -17,6 +17,11 @@ BoldItalicFont={Baskerville SemiBold Italic}
 \usepackage{hyperref}
 \urlstyle{same}
 
+\usepackage{etoolbox}
+\newtoggle{MODEPLT}
+
+\toggletrue{MODEPLT}
+
 \newcommand{\SectionTitle}[2][.2in] {
   \vspace{#1}
   \textbf{\large #2}
@@ -78,14 +83,16 @@ Scala, Go, Ruby, Python, TypeScript/JavaScript, Elm, bash, Linux, software
 design and architecture, compilers, parsing, codegen, process automation,
 continuous integration, distributed systems, observability, project management.
 
+\iftoggle{MODEPLT}{
 \SectionTitle{Independent Work}
 
 I've independently developed compilers and programming languages featuring
 Hindley–Milner type inference, custom opcode instruction sets, multi-pass
 compilation, and integration with LLVM. My projects demonstrate experience
 and knowledge in formal language specifications, parsing, syntax and semantic
-analysis, and code generation. This highlights my ability to innovate within
-Programming Language Theory and compiler construction.
+analysis, and code generation.
+\\
+}
 
 \SectionTitle{Experience}
 
