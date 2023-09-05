@@ -34,11 +34,12 @@ BoldItalicFont={Baskerville SemiBold Italic}
   \noindent \textit{\strong{#1}, #2} \hfill #3
 }
 
-\newcommand{\DescribedEntry}[4] {
-  \noindent \textit{\strong{#1}, #2} \hfill #3
-  \vspace{.035in}
+\newcommand{\DescribedEntry}[5][.035in] {
+  \noindent \textit{\strong{#2}, #3} \hfill #4
+  \vspace{#1}
+  % \vspace{.035in}
 
-  #4\leavevmode\\
+  #5\leavevmode\\
 }
 
 \newcommand{\DescribedEntryLine}[4] {
@@ -117,28 +118,28 @@ Scala, Racket, Ruby (Rails), Python (Flask, Django), Go, TypeScript/JavaScript (
 }
 \vspace{.1in}
 \iftoggle{MODELONG}{
-  \DescribedEntry{Software Engineer}{InsideSales.com}{January 2012 - November 2014}{
+  \DescribedEntry{Software Engineer, Team Lead}{InsideSales.com}{January 2014 - November 2014}{
     Lead of the PowerStandings team. Worked with my team to making the MVP production ready, improving the interface and user experience, and making the application standalone.
-    \\ \vspace{.08in}
+  }
+  \vspace{.1in}
+  \DescribedEntry{Software Engineer, DevOps}{InsideSales.com}{June 2013 - January 2014}{
     Worked on bring in a more "DevOps-y" mindset into the department. Helped improve the development and deployment process for lots of services. Learned a lot about ops, systems, Linux.
-    \\ \vspace{.08in}
+  }
+  \vspace{.1in}
+  \DescribedEntry{Software Engineer}{InsideSales.com}{January 2012 - June 2013}{
     I worked on new features for our LMP product. Some of these were a custom report engine and an intelligent data deduplication tool. The Intelligent Deduplication project was one of my favorites. It was able to take a client's database, search for duplicate records by comparing multiple data points, then merge all the data, which spanned across multiple tables, into a new record.
   }
-}{
-  \DescribedEntryTitle{Software Engineer}{InsideSales.com}{January 2012 - November 2014}
-}
-\vspace{.1in}
-\iftoggle{MODELONG}{
-  \DescribedEntry{Implementation Team Member \& Manager}{InsideSales.com}{January 2009 - December 2011}{
+  \vspace{.1in}
+  \DescribedEntry{Implementation Team Manager}{InsideSales.com}{January 2011 - December 2011}{
     I managed a team of Implementation Technicians. As a team we made further improvements to my previous work. One of the biggest takeaways from this position was that I learned how to breakdown big jobs into smaller tasks so that they could be worked on by a team.
-    \\ \vspace{.08in}
-    Along with my managerial responsibilities and helping with the day-to-day work, I also trained all new members and made sure quality standard were met.
-    \\ \vspace{.08in}
-    I took care of all of the technological aspects of the implementation. This included, but was not limited to, things such as data imports and automated sanitation, inbound and outbound call-flow setup, automated work flows, and some custom development as well.
-    \\ \vspace{.08in}
+  }
+  \vspace{.1in}
+  \DescribedEntry{Implementation Team Member}{InsideSales.com}{January 2009 - December 2010}{
     I joined the department when it was first being created, so I was a big part in helping the department grow. I helped by creating the processes and standards that would later be followed by the team I managed. This was my first exposure to a professional environment, and it was a great learning experience. This is also the job that got me interested in programming.
   }
 }{
+  \DescribedEntryTitle{Software Engineer}{InsideSales.com}{January 2012 - November 2014}
+  \vspace{.1in}
   \DescribedEntryTitle{Implementation Team Member \& Manager}{InsideSales.com}{January 2009 - December 2011}
 }
 
