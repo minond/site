@@ -21,8 +21,8 @@ BoldItalicFont={Baskerville SemiBold Italic}
 \newtoggle{MODEPLT}
 \newtoggle{MODELONG}
 
-\toggletrue{MODEPLT}
-% \toggletrue{MODELONG}
+\togglefalse{MODEPLT}
+\togglefalse{MODELONG}
 
 \newcommand{\SectionTitle}[2][.2in] {
   \vspace{#1}
@@ -65,34 +65,38 @@ BoldItalicFont={Baskerville SemiBold Italic}
 
 \SectionTitle[.1in]{Summary}
 
-With over a decade of hands-on experience in frontend and backend application development and system design, I bring a deep-rooted passion for computer science and software engineering to the table. My commitment to programming is unwavering, driven by an innate curiosity that goes beyond money. With a focus in building performant and scalable solutions, my expertise lies at the intersection of innovation and practicality.
+
+With over a decade of hands-on experience in frontend and backend application development, coupled with system design expertise, I bring a passion for computer science and software engineering to the table. My focus is on building performant and scalable solutions that exceed user expectations.
 
 \vspace{.08in}
 
-Beyond my technical prowess, I extend my impact to the community by volunteering at the Utah Refugee Center. Here, I take on roles as an organizer and instructor for programming courses, shaping the next generation of aspiring developers through guidance and mentorship.
+Beyond my technical expertise, I actively contribute to my community by volunteering at the Utah Refugee Center. Here, I serve as both an organizer and instructor for programming courses, playing an important role in shaping the aspirations of the next generation of developers through guidance and mentorship.
 
 \SectionTitle{Skills}
 
-Scala, Go, Ruby, Python, TypeScript/JavaScript, Elm, bash, Linux, software design and architecture, compilers, parsing, codegen, process automation, continuous integration, distributed systems, observability, project management.
+Scala, Racket, Ruby (Rails), Python (Flask, Django), Go, TypeScript/JavaScript (React), Node, Elm, database and query optimization, bash, Linux, software design, system architecture, compilers, parsing, codegen, process automation, continuous integration, distributed systems, observability, project management.
 
 \iftoggle{MODEPLT}{
-\SectionTitle{Independent Work}
+  \SectionTitle{Independent Work}
 
-I've independently developed compilers and programming languages featuring Hindley–Milner type inference, custom opcode instruction sets, multi-pass compilation, and integration with LLVM. My projects demonstrate experience and knowledge in formal language specifications, parsing, syntax and semantic analysis, and code generation.
-\\
+  I've independently developed compilers and programming languages featuring Hindley–Milner type inference, custom opcode instruction sets, multi-pass compilation, and integration with LLVM. My projects demonstrate experience and knowledge in formal language specifications, parsing, syntax and semantic analysis, and code generation.
+  \\
 }
 
 \SectionTitle{Experience}
 
-\DescribedEntryTitle{Software Engineer, Freelance}{Minond, LLC}{January 2023 - Present}
+\DescribedEntry{Software Engineer, Freelance}{Minond, LLC}{January 2023 - Present}{
+  As a freelance software engineer, I've engaged in diverse projects encompassing personal initiatives and contract work. My primary focus has been on building a carbon footprint application for a client, where I have played a pivotal role in the design, development, and deployment of the application.
+}
 \vspace{.1in}
 \DescribedEntry{Staff Software Engineer}{MX}{April 2018 - December 2022}{
   Played an active part in shaping our platform as both an individual contributor and a mentor to individuals and teams designing and developing solutions for a rapidly evolving industry and ecosystem.
   \begin{itemize}
     \setlength\itemsep{.0in}
     \item Member of the Enterprise Technical Office group where I dealt with high urgency client requirements and advised in project architecture and problem solving platform-wide.
-    \item Led and owned new initiative to improve our client's developer experience. This included building SDKs for major mobile platforms. Evangelized this team's solutions and enhancements to internal and external parties.
-    \item Technical lead to over a dozen backend and frontend engineers in the design and development of MXinsights, a financial feed product currently serving over 7 million users.
+    \item Conceived and led initiative to improve our client's developer experience, shortening part of the implementation process from an average of two weeks down to 6 hours. This included building SDKs for major mobile platforms. Evangelized this team's solutions and enhancements to internal and external parties.
+    \item Technical lead to over a dozen backend and frontend engineers in the design and development of MXinsights, a financial feed product serving over 7 million users at the time of my departure. This product helped us to break into a new market by securing a contract exceeding \$3 million with one of Canada's largest banks.
+    \item Optimized critical endpoints, reducing average response times from 100ms to under 10ms. These endpoints served as the backbone for the entire platform and are used by all of our products.
   \end{itemize}
 }
 \vspace{.02in}
@@ -118,7 +122,7 @@ I've independently developed compilers and programming languages featuring Hindl
     \\ \vspace{.08in}
     Worked on bring in a more "DevOps-y" mindset into the department. Helped improve the development and deployment process for lots of services. Learned a lot about ops, systems, Linux.
     \\ \vspace{.08in}
-    I worked on new features for our LMP product. Some of these were a custom report engine and an intelligent data deduplication tool. The Intelligent Deduplication project was one of my favorites. It was able to take a client's database, search for duplicate records by comparing multiple data points, then merge all the data, which spanned across multiple tables, into a new record. The client had the ability to customize the way the searching and merging algorithms worked, and they were also able to un-merge records afterwards.
+    I worked on new features for our LMP product. Some of these were a custom report engine and an intelligent data deduplication tool. The Intelligent Deduplication project was one of my favorites. It was able to take a client's database, search for duplicate records by comparing multiple data points, then merge all the data, which spanned across multiple tables, into a new record.
   }
 }{
   \DescribedEntryTitle{Software Engineer}{InsideSales.com}{January 2012 - November 2014}
