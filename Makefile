@@ -26,3 +26,8 @@ docs/Marcos-Minond-Resume.pdf: resume.tex
 
 clean:
 	rm resume.aux resume.log resume.out
+
+dependencies:
+	npm i -g html-minifier
+	go install github.com/minond/fspress/cmd/fspress@latest
+	go install github.com/minond/fspress/cmd/fspressc@latest
